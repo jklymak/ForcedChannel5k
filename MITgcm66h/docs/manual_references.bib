@@ -1,0 +1,923 @@
+@string{angl    = {Ann.\ Glaciol.}}
+@string{arfm  = {Annu.~Rev.~Fluid Mech.}}
+@string{bams  = {Bull.~Am.~Met.~Soc.}}
+@string{blm = {Bound.~Layer~Meteorol.}}
+@string{climd = {Clim.~Dynamics}}
+@string{cch     = {Clim.\ Change}}
+@string{cup = {Cambridge University Press}}
+@string{dao     = {Dyn.~Atmos.~Oceans}}
+@string{dkrz  = {Deutsches Klimarechenzentrum (DKRZ)}}
+@string{dnmi  = {The Norwegian Meteorological Institute (DNMI)}}
+@string{dsr = {Deep Sea Res.}}
+@string{ecmwf = {ECMWF}}
+@string{eos     = {Eos~Trans.\ AGU}}
+@string{esa = {European Space Agency (ESA)}}
+@string{esapub  = {ESA Publications Division, ESTEC, Noordwijk (NL)}}
+@string{estec = {European Space Research and Technology Centre (ESTEC)}}
+@string{gaos  = {Global Atmos.~Ocean System}}
+@string{grl = {Geophys.~Res.~Lett.}}
+@string{ieee  = {IEEE Trans.~Geosci. Remote Sensing}}
+@string{ifremer = {IFREMER/CERSAT}}
+@string{igarss  = {IEEE Press, Piscataway, N.J., USA}}
+@string{jam = {J.~Appl.~Meteor.}}
+@string{jaot  = {J.~Atmos.~Ocean.~Technol.}}
+@string{jas = {J.~Atmos.~Sci.}}
+@string{jclim = {J.~Clim.}}
+@string{jcp = {J.~Comput.~Phys.}}
+@string{jfm = {J.~Fluid Mech.}}
+@string{jgr = {J.~Geophys.~Res.}}
+@string{ijrs  = {Int.~J.~Remote Sensing}}
+@string{jms = {J.~Mar.~Sys.}}
+@string{jpo = {J.~Phys.~Oceanogr.}}
+@string{mpi = {MPI f\"ur Meteorologie}}
+@string{mwr     = {Mon.~Wea.~Rev.}}
+@string{om  = {Ocean Modelling}}
+@string{ptrsl   = {{Phil.~Trans.~R.~Soc.~Lond.}}}
+@string{qjrms   = {{Q.~J.~R.~Meteorol.~Soc.}}}
+@string{siscicom= {SIAM J.\ Sci.\ Comput.}}
+@string{tel = {Tellus}}
+
+
+
+@PhdThesis{adcroft:95,
+  author =   {Adcroft, A.},
+  title =    {Numerical Algorithms for use in a Dynamical Model of the
+                  Ocean},
+  school =   {Imperial College, London},
+  year =   1995
+}
+
+@Article{adcroft:97,
+  author =   {Adcroft, A.J. and Hill, C.N. and J. Marshall},
+  title =    {Representation of topography by shaved cells in a height
+                  coordinate ocean model},
+  journal =    mwr,
+  year =   1997,
+  volume =   125,
+  pages =  {2293-2315},
+  url   =        {http://mitgcm.org/pdfs/mwr_1997.pdf},
+  doi       =    {10.1175/1520-0493\%281997\%29125<2293:ROTBSC>2.0.CO;2},
+}
+
+@Article{adcroft:99,
+  author =   {Adcroft, A., Hill C. and J. Marshall},
+  title =    {A new treatment of the Coriolis terms in C-grid models
+                  at both high and low resolutions},
+  journal =    mwr,
+  year =   1999,
+  volume =   127,
+  pages =  {1928-1936},
+  url   =        {http://mitgcm.org/pdfs/mwr_1999.pdf},
+  doi   =        {10.1175/1520-0493\%281999\%29127<1928:ANTOTC>2.0.CO;2},
+}
+
+@Article{adcroft:04a,
+  author =   {Adcroft, A. and J.-M. Campin},
+  title =    {Re-scaled height coordinates for accurate representation
+                  of free-surface flows in ocean circulation models},
+  journal =    om,
+  year =   2004,
+  volume =   7,
+  pages =  {269-284},
+  doi   =        {10.1016/j.ocemod.2003.09.003},
+}
+
+@Article{adcroft:04b,
+  author =   {Adcroft, A. and J.-M. Campin and C. Hill and J. Marshall},
+  title =    {Implementation of an Atmosphere-Ocean General Circulation Model
+                  on the Expanded Spherical Cube},
+  journal =    mwr,
+  year =   2004,
+  volume =   132,
+  pages =  {2845-2863},
+  url   =        {http://mitgcm.org/pdfs/mwr_2004.pdf},
+  doi     =      {10.1175/MWR2823.1},
+}
+
+
+@inproceedings{adcroft:04c,
+  author =   {Adcroft, A. and C. Hill and J.-M. Campin and J. Marshall
+                  and P. Heimbach},
+  title =    {Overview of the Formulation and Numerics of the {MIT}GCM},
+  booktitle =   {Proceedings of the ECMWF seminar series on Numerical Methods,
+                 Recent developments in numerical methods for atmosphere and
+                 ocean modelling},
+  year =   2004,
+  pages =  {139-149},
+  url   =        {http://mitgcm.org/pdfs/ECMWF2004-Adcroft.pdf},
+ publisher =     ecmwf
+}
+
+@Article{bouillon13,
+  author =	 {Sylvain Bouillon and Thierry Fichefet and Vincent
+                  Legat and Gurvan Madec},
+  title =	 {The Elastic-Viscous-Plastic Method Revisited},
+  journal =	 om,
+  volume =	 71,
+  number =	 0,
+  pages =	 {2--12},
+  year =	 2013,
+  note =	 {Arctic Ocean},
+  issn =	 {1463-5003},
+  doi =		 {10.1016/j.ocemod.2013.05.013},
+  url =		 {http://dx.doi.org/10.1016/j.ocemod.2013.05.013},
+}
+
+@Article{cam08,
+  author =   {Jean-Michel Campin and John Marshall and David
+                  Ferreira},
+  title =  {Sea-Ice Ocean Coupling Using a Rescaled Vertical
+                  Coordinate z$^\ast$},
+  journal =  om,
+  volume =   24,
+  number =   {1--2},
+  pages =  {1--14},
+  doi =    {10.1016/j.ocemod.2008.05.005},
+  year =   2008
+}
+
+@Article{castro-morales14,
+  author =	 {Karel Castro-Morales and Frank Kauker and Martin
+                  Losch and Stefan Hendricks and Kathrin Riemann-Campe
+                  and R{\"u}diger Gerdes},
+  title =	 {Sensitivity of Simulated {A}rctic Sea Ice to
+                  Realistic Ice Thickness Distributions and Snow
+                  Parameterizations},
+  journal =	 jgr,
+  issn =	 {2169-9291},
+  year = 	 2014,
+  volume = 	 119,
+  number = 	 1,
+  pages =	 {559--571},
+  url =		 {http://dx.doi.org/10.1002/2013JC009342},
+  doi =		 {10.1002/2013JC009342},
+}
+
+@Article{chou:90,
+ author       = {M-D. Chou},
+ year         = {1990},
+ title        = {Parameterizations for the absorption of solar radiation
+                   by O$_2$ and CO$_2$ with applications to climate studies.},
+ journal      = jclim,
+ volume       = {3},
+ pages        = {209-217}
+}
+
+
+@Article{chou:92,
+ author       = {M-D. Chou},
+ year         = {1992},
+ title        = {A solar radiation model for use in climate studies.},
+ journal      = jas,
+ volume       = {49},
+ pages        = {762-772}
+}
+
+@techreport{chsz:94,
+ author       = {M.-D. Chou and M.J.Suarez},
+ year         = {1994},
+ title        = {An efficient thermal infrared radiation parameterization
+for use in general circulation models},
+ institution  = {National Aeronautics and Space Administration},
+ type         = {NASA Technical Memorandum},
+ number       = {104606-Vol 3},
+ address      = {NASA; Goddard Space Flight Center; Greenbelt (MD), 20771; USA},
+ note         = {http://www.gmao.nasa.gov/}
+}
+
+@Article{clarke:70,
+ author       = {R. H. Clarke},
+ year         = {1970},
+ title        = {Observational studies in the atmospheric boundary layer.},
+ journal      = qjrms,
+ volume       = {96},
+ pages        = {91-114}
+}
+
+
+@Article{cox87,
+  author =       {M. D. Cox},
+  title =        {An isopycnal diffusion in a z-coordinate ocean model},
+  journal =      {Ocean modelling},
+  year =         1987,
+  volume =       74,
+  pages =        {1-5 (Unpublished manuscript)}
+}
+
+
+
+@Article{deftow:94,
+ author       = { R. S. Defries and J. R. G. Townshend},
+ year         = {1994},
+ title        = {NDVI-derived Land Cover Classification at Global Scales. },
+ journal      = {Int'l J. Rem. Sens.} ,
+ volume       = {15},
+ pages        = {3567-3586}
+}
+
+
+@Article{dorsell:89,
+ author       = { J. L. Dorman and P. J. Sellers},
+ year         = {1989},
+ title        = {A global climatology of albedo, roughness length and stomatal
+resistance for atmospheric general circulation models as represented by the Simple Biosphere model (SiB).},
+ journal      = jam,
+ volume       = {28},
+ pages        = {833-855}
+}
+
+@ARTICLE{fla92,
+  AUTHOR      = "G. M. Flato and Hibler, III, W. D.",
+  TITLE       = "Modeling pack ice as a cavitating fluid",
+  JOURNAL     = jpo,
+  YEAR        = 1992,
+  VOLUME      = 22,
+  PAGES       = "626-651"
+}
+
+
+@Article{gas-eta:90,
+ author   = {P. Gaspar and Y. Gr\'egoris and J.-M. Lefevre},
+ year   = 1990,
+ title    = {A Simple Eddy Kinetic Energy Model for Simulations of the
+                   Oceanic Vertical Mixing: Tests at Station Papa and Long-Term
+                   Upper Ocean Study Site},
+ journal  = jgr,
+ volume   = {95 (C9)},
+ pages    = {16,179--16,193},
+      }
+
+
+
+@Article{gen-eta:95,
+ author   = {P. R. Gent and J. Willebrand and T. J. McDougall and J. C. McWilliams},
+ year   = 1995,
+ title    = {Parameterizing eddy-induced tracer transports in ocean circulation models},
+ journal  = jpo,
+ volume   = {25},
+ pages    = {463--474},
+      }
+      
+
+@Article{gen-mcw:90,
+ author   = {P. R. Gent and J. C. McWilliams},
+ year   = 1990,
+ title    = {Isopycnal mixing in ocean circulation models},
+ journal  = jpo,
+ volume   = {20},
+ pages    = {150--155},
+      }
+
+
+@Article{gkw:91,
+  author =       {R. Gerdes and C. Koberle and J. Willebrand},
+  title =        {The influence of numerical advection schemes on the results of ocean general circulation models},
+  journal =      climd,
+  year =         1991,
+  volume =       5,
+  number =       4,
+  pages =        {211-226},
+  doi   =        {10.1007/BF00210006}
+}
+
+
+@ARTICLE{gr:98,
+  author =       {S. M. Griffies},
+  title =        {The {Gent-McWilliams} Skew Flux},
+  journal =      jpo,
+  year =         1998,
+  volume =       28,
+  pages =        {831-841}
+}
+
+@Article{gretal:98,
+  author =       {S. M. Griffies and A. Gnanadesikan and R. C. Pacanowski and V. Larichev and J.  K. Dukowicz and R. D. Smith},
+  title =        {Isoneutral diffusion in a z-coordinate ocean model},
+  journal =      jpo,
+  year =         1998,
+  volume =       28,
+  pages =        {805-830}
+}
+
+@InCollection{hill:95,
+  author =   {Hill, C. and J. Marshall},
+  title =  {Application of a Parallel Navier-Stokes Model to
+                  Ocean Circulation in Parallel Computational Fluid
+                  Dynamics},
+  booktitle =  {Implementations and Results Using Parallel
+                  Computers},
+  pages =  {545-552},
+  publisher =  {Elsevier Science B.V.: New York},
+  year =   1995,
+  editor =   {A. Ecer, J. Periaux, N. Satofuka and S. Taylor}
+}
+
+@Article{helflab:88,
+ author       = { H. M. Helfand and J. C. Labraga},
+ year         = {1988},
+ title        = { Design of a non-singular level 2.5 second-order closure
+model for the prediction of atmospheric turbulence. },
+ journal      = jas,
+ volume       = {45},
+ pages        = {113-132}
+}
+
+@Article{helfschu:95,
+ author       = {H. M. Helfand and S. D. Schubert},
+ year         = {1995},
+ title        = { Climatology of the
+Simulated Great Plains Low-Level Jet and Its contribution to the
+Continental Moisture Budget of the United States. },
+ journal      = jclim,
+ volume       = {8},
+ pages        = {784-806}
+}
+
+
+@ARTICLE{hib79,
+  author =   {Hibler, III, W. D.},
+  TITLE       = "A Dynamic Thermodynamic Sea Ice Model",
+  JOURNAL     = jpo,
+  YEAR        = 1979,
+  VOLUME      = 9,
+  PAGES       = "815-846"
+}
+
+@Article{hib80,
+  author =	 {Hibler, III, William D.},
+  title =	 {Modeling a Variable Thickness Sea Ice Cover},
+  journal =	 mwr,
+  year =	 1980,
+  volume =	 1,
+  pages =	 {1943--1973}
+}
+
+@InCollection{hibler84,
+  author =	 {Hibler, III, William D.},
+  title =	 {The role of sea ice dynamics in modeling CO{$_2$}
+                  increases},
+  booktitle =	 {Climate processes and climate sensitivity},
+  pages =	 {238--253},
+  publisher =	 {AGU},
+  year =	 1984,
+  editor =	 {J. E. Hansen and T. Takahashi},
+  volume =	 29,
+  series =	 {Geophysical Monograph},
+  address =	 {Washington, D.C.}
+}
+
+@Article{hibler87,
+  author =   {Hibler, III, William D. and Kirk Bryan},
+  title =  {A Diagnostic Ice-Ocean Model},
+  journal =  jpo,
+  year =   1987,
+  volume =   17,
+  number =   7,
+  pages =  {987--1015}
+}
+
+
+
+@InProceedings{hill:99,
+  author =   {Chris Hill, Alistair Adcroft, Daniel Jamous and John Marshall},
+  title =    {A Strategy for Terascale Climate Modeling},
+  booktitle =    {In Proceedings of the Eighth ECMWF Workshop on the Use of Parallel Processors in Meteorology},
+  year =   1999,
+  pages = {406-425},
+  publisher =  {World Scientific},
+}
+
+@Article{Holland75,
+ author   = {W.R. Holland and L. B. Lin},
+ year   = {1975a},
+ title    = {On the origin of mesoscale eddies and their contribution
+                   to the general circulation of the ocean. I. A preliminary
+                   numerical experiment},
+ journal  = jpo,
+ volume         = {5},
+ pages          = {642-657}
+      }
+
+
+@Article{hun97,
+  author =	 {E. C. Hunke and J. K. Dukowicz},
+  title =	 {An elastic-viscous-plastic model for sea ice
+                  dynamics},
+  journal =	 jpo,
+  year =	 1997,
+  volume =	 27,
+  pages =	 {1849--1867}
+}
+
+
+@Article{hun01,
+  author =	 {Elizabeth C. Hunke},
+  title =	 {Viscous-Plastic Sea Ice Dynamics with the {EVP}
+                  Model: Linearization Issues},
+  journal =	 jcp,
+  year =	 2001,
+  volume =	 170,
+  pages =	 {18--38},
+  doi =		 {10.1006/jcph.2001.6710}
+}
+
+@Article{hutchings04,
+  author =	 {Jennifer K. Hutchings and Hrvoje Jasak and Seymour
+                  W. Laxon},
+  title =	 {A Strength Implicit Correction Scheme for the
+                  Viscous-Plastic Sea Ice Model},
+  journal =	 om,
+  year =	 2004,
+  volume =	 7,
+  number =	 {1--2},
+  pages =	 {111-133},
+  doi =		 {10.1016/S1463-5003(03)00040-4}
+}
+
+@Article{kimmritz15,
+  author =	 {Madlen Kimmritz and Sergey Danilov and Martin Losch},
+  title =	 {On the Convergence of the Modified
+                  Elastic-Viscous-Plastic Method of Solving for
+                  Sea-Ice Dynamics},
+  journal =	 jcp,
+  year =	 2015,
+  volume =	 296,
+  pages =	 {90--100},
+  doi =		 {10.1016/j.jcp.2015.04.051}}
+
+@Article{kimmritz16,
+  author =	 {Madlen Kimmritz and Sergey Danilov and Martin Losch},
+  title =	 {The Adaptive {EVP} Method for Solving the Sea Ice
+                  Momentum Equation},
+  journal =	 om,
+  year =	 2016,
+  volume =	 101,
+  doi =		 {10.1016/j.ocemod.2016.03.004},
+  pages =	 {59--67}}
+
+@Article{klymaklegg10,
+  author =   {Klymak, Jody M. and Sonya M. Legg},
+  title =  {A simple mixing scheme for models that resolve
+                  breaking internal waves},
+  journal =  om,
+  year =   2010,
+  volume =   33,
+  pages =  {224--234},
+  doi =    {10.1016/j.ocemod.2010.02.005}
+}
+
+@Article{kondo:75,
+ author       = {J. Kondo},
+ year         = {1975},
+ title        = {Air-sea bulk transfer coefficients in diabatic conditions.},
+ journal      = blm,
+ volume       = {9},
+ pages        = {91-112}
+}
+
+
+@techreport{ks:91,
+ author       = {Randal D. Koster and Max J. Suarez},
+ year         = {1991},
+ title        = {A Simplified Treatment of SiB's Land Surface Albedo Parameterization.},
+ institution  = {National Aeronautics and Space Administration},
+ type         = {NASA Technical Memorandum},
+ number       = {104538},
+ address      = {NASA; Goddard Space Flight Center; Greenbelt (MD), 20771; USA},
+ note         = {http://www.gmao.nasa.gov/},
+}
+
+@Article{ks:92,
+ author       = {Randal D. Koster and Max J. Suarez},
+ year         = {1992},
+ title        = {Modeling the Land Surface Boundary
+in Climate Models as a Composite of Independent Vegetation Stands.},
+ journal      = jgr,
+ volume       = {97},
+ pages        = {2697-2715}
+}
+
+@Article{lar-eta:94,
+ author   = {W.G. Large and J.C. McWilliams and S.C. Doney},
+ year   = 1994,
+ title    = {Oceanic vertical mixing: A review and a model with nonlocal boundary layer parameterization},
+ journal  = {Rev.~Geophys.},
+ volume   = {32},
+ pages    = {363--403},
+      }
+
+@Article{lar-eta:97,
+ author   = {W. G. Large and G. Danabasoglu and S. C. Doney
+                  and J. C. McWilliams},
+ year   = 1997,
+ title    = {Sensitivity to surface forcing and boundary layer
+                  mixing in a global ocean model: Annual-mean climatology},
+ journal  = jpo,
+ volume   = {27},
+ number         = 11,
+ pages    = {2418--2447},
+      }
+
+@Article{larpond:81,
+ author       = {W. G. Large and S. Pond},
+ year         = {1981},
+ title        = {Open ocean momentum flux measurements in moderate to strong winds.},
+ journal      = jpo,
+ volume       = {11},
+ pages        = {324-336}
+}
+
+@Article{lemieux10,
+  author =   {Jean-Fran{\c{c}}ois Lemieux and Bruno Tremblay and Jan
+                  Sedl{\'a}{\v{c}}ek and Paul Tupper and Stephen
+                  Thomas and David Huard and Jean-Pierre Auclair},
+  title =  {Improving the Numerical Convergence of
+                  Viscous-Plastic Sea Ice Models with the
+                  {J}acobian-Free {N}ewton-{K}rylov Method},
+  journal =  jcp,
+  year =   2010,
+  volume =   229,
+  pages =  {2840--2852},
+  doi =    {10.1016/j.jcp.2009.12.011c}}
+
+
+@Article{lemieux12,
+  author =	 {Jean-Fran{\c{c}}ois Lemieux and Dana Knoll and Bruno
+                  Tremblay and David M. Holland and Martin Losch},
+  title =	 {A Comparison of the {J}acobian-free
+                  {N}ewton-{K}rylov Method and the {EVP} Model for
+                  Solving the Sea Ice Momentum Equation with a
+                  Viscous-Plastic Formulation: a Serial Algorithm
+                  Study},
+  journal =	 jcp,
+  year =	 2012,
+  volume =	 231,
+  number =	 17,
+  pages =	 {5926--5944},
+  doi =		 {10.1016/j.jcp.2012.05.024}}
+
+@Article{leppaeranta83,
+  author =	 {Matti Lepp{\"a}ranta},
+  title =	 {A Growth Model for Black Ice, Snow Ican and Snow
+                  Thickness in Subarctic Basins},
+  journal =	 {Nordic Hydrology},
+  year =	 1983,
+  volume =	 14,
+  pages =	 {59--70}
+}
+
+@Article{lhans:74,
+ author       = {A. A. Lacis and J. E. Hansen},
+ year         = {1974},
+ title        = { A parameterization for the absorption of solar radiation
+in the Earth's atmosphere.  },
+ journal      = jas,
+ volume       = {31},
+ pages        = {118-133}
+}
+
+
+@Article{losch10:_mitsim,
+  author =   {Losch, Martin and Menemenlis, Dimitris and Campin,
+                  Jean-Michel and Heimbach, Patrick and Hill, Chris},
+  title =  {On the formulation of sea-ice models. {P}art 1:
+                  Effects of different solver implementations and
+                  parameterizations},
+  journal =  om,
+  year =   2010,
+  volume =   33,
+  number =   {1--2},
+  pages =  {129--144},
+  doi =    {10.1016/j.ocemod.2009.12.008}
+}
+
+@Article{losch14:_jfnk,
+  author =   {Martin Losch and Annika Fuchs and
+                  Jean-Fran{\c{c}}ois Lemieux and Anna Vanselow},
+  title =  {A Parallel {J}Acobian-Free {N}ewton-{K}rylov Solver
+                  for a Coupled Sea Ice-Ocean Model },
+  journal =  jcp,
+  volume =   {257},
+  number =   {A},
+  pages =  {901--910},
+  year =   {2014},
+  doi =    {10.1016/j.jcp.2013.09.026}
+}
+
+@Article{maro-eta:99,
+ author   = {J. Marotzke and R. Giering and K.Q. Zhang and
+                  D. Stammer and C. Hill and T. Lee},
+ year   = 1999,
+ title    = {Construction of the adjoint MIT ocean general
+                  circulation model and application to Atlantic heat
+                  transport variability},
+ journal  = jgr,
+ volume   = {104, C12},
+ pages    = {29,529--29,547},
+      }
+
+
+@Article{mars-eta:98,
+ author   = {J. Marshall and H. Jones and C. Hill},
+ year   = 1998,
+ title    = {Efficient ocean modeling using
+                  non-hydrostatic algorithms},
+ journal  = jms,
+ volume   = {18},
+ pages    = {115--134},
+ url            = {http://mitgcm.org/pdfs/journal_of_marine_systems_1998.pdf},
+ doi            = {10.1016/S0924-7963\%2898\%2900008-6},
+      }
+
+@Article{marshall:97a,
+  author =   {Marshall, J. and C. Hill and L. Perelman and A. Adcroft},
+  title =    {Hydrostatic, quasi-hydrostatic, and nonhydrostatic ocean
+                 modeling},
+  journal =    jgr,
+  year =   1997,
+  volume =   102,
+  number =   {C3},
+  pages =  {5733-5752},
+  url      =     {http://mitgcm.org/pdfs/96JC02775.pdf},
+}
+
+
+@Article{marshall:97b,
+  author =   {Marshall, J. and A. Adcroft and C. Hill and L. Perelman and C. Heisey},
+  title =    {A finite-volume, incompressible Navier Stokes model for
+                  studies of the ocean on parallel computers},
+  journal =    jgr,
+  year =   1997,
+  volume =   102,
+  number =   {C3},
+  pages =  {5753-5766},
+  url      =     {http://mitgcm.org/pdfs/96JC02776.pdf},
+}
+
+
+@Article{marshall:04,
+  author =   {Marshall, J. and A. Adcroft and J.-M. Campin and C. Hill and A. White},
+  title =    {Atmosphere-Ocean Modeling Exploiting Fluid Isomorphisms},
+  journal =    mwr,
+  year =   2004,
+  volume =   132,
+  pages =  {2882-2894},
+  url   =        {http://mitgcm.org/pdfs/a_o_iso.pdf},
+  doi    =       {10.1175/MWR2835.1},
+}
+
+@Article{mol:09,
+ author   = {Andrea Molod},
+ year   = 2009,
+ title    = {Running {GCM} physics and dynamics on different grids:
+                   algorithm and tests},
+ journal  = tel,
+ volume   = {61A},
+ pages    = {381--393},
+      }
+
+@Article{moorsz:92,
+ author       = {S. Moorthi and M. J. Suarez},
+ year         = {1992},
+ title        = {  Relaxed Arakawa Schubert: A parameterization of moist
+convection for general circulation models.},
+ journal      = mwr,
+ volume       = {120},
+ pages        = {978-1002}
+}
+
+
+@Article{moum96,
+  author  = {Moum, J.N.},
+  title   = {Energy-containing scales of turbulence in the ocean thermocline},
+  journal = jgr,
+  year    = 1996,
+  volume  = {101 (C3)},
+  pages   = {14095--14109}
+}
+
+
+@Article{orl:76,
+ author   = {I. Orlanski},
+ year   = 1976,
+ title    = {A simple boundary condition for unbounded hyperbolic flows},
+ journal  = jcp,
+ volume   = {21},
+ pages    = {251--269},
+    }
+
+
+@Article{pal-rom:97,
+ author   = {T. Paluszkiewicz and R.D. Romea},
+ year   = 1997,
+ title    = {A one-dimensional model for the parameterization
+                  of deep convection in the ocean},
+ journal  = dao,
+ volume   = {26},
+ pages    = {95--130},
+      }
+
+@incollection{pano:73,
+ author       = {H. A. Panofsky},
+ year         = {1973},
+ title        = {Tower Micrometeorology. },
+ booktitle    = {Workshop on Micrometeorology},
+ editor       = {D. A. Haugen},
+ publisher    = {American Meteorological Society}
+}
+
+
+@article{redi1982,
+abstract = {Current numerical models of oceanic circulation differentiate between the eddy diffusion and viscosity transport along the geopotential horizontal and vertical directions only. In order to model the effect of anisotropic turbulence as diffusive transport along and across},
+author = {Redi, Martha H.},
+doi = {10.1175/1520-0485(1982)012<1154:OIMBCR>2.0.CO;2},
+isbn = {0022-3670},
+issn = {0022-3670},
+journal = jpo,
+month = {oct},
+number = {10},
+pages = {1154--1158},
+title = {{Oceanic Isopycnal Mixing by Coordinate Rotation}},
+volume = {12},
+year = {1982}
+}
+
+@Incollection{roe:85,
+ author         = {P.L. Roe},
+ year           = 1985,
+ title          = {Some contributions to the modelling of discontinuous flows},
+ booktitle      = {Large-Scale Computations in Fluid Mechanics},
+ series         = {Lectures in Applied Mathematics},
+ volume         = 22,
+ pages          = {163--193},
+ editor         = {B.E. Engquist and S. Osher and R.C.J. Somerville},
+ publisher      = {American Mathematical Society},
+ address        = {Providence, RI},
+}
+
+@Article{rosen:87,
+  author =	 {J. E. Rosenfield and M. R. Schoeberl and
+                  M. A. Geller},
+  year =	 {1987},
+  title =	 {A computation of the stratospheric diabatic
+                  circulation using an accurate radiative transfer
+                  model},
+  journal =	 jas,
+  volume =	 {44},
+  pages =	 {859-876}
+}
+
+
+@Article{seimgregg94,
+  author  = {Seim, Harvey E. and Michael C. Gregg},
+  title   = {Detailed observations of a naturally occurring shear instability},
+  journal = jgr,
+  year    = 1994,
+  volume  = {99 (C5)},
+  pages   = {10049--10073},
+}
+
+@Article{stevens:90,
+  author =   {Stevens, D. P.},
+  title =  {On Open Boundary Conditions for Three Dimensional
+                  Primitive Equation Ocean Circulation Models},
+  journal =  {Geophys. Astrophys. Fl. Dyn.},
+  year =   1990,
+  volume =   51,
+  pages =  {103--133}
+}
+
+@Article{sem76,
+  author =	 {Semtner, Jr., Albert J.},
+  title =	 {A model for the thermodynamic growth of sea ice in
+                  numerical investigations of climate},
+  journal =	 jpo,
+  year =	 1976,
+  volume =	 6,
+  pages =	 {379--389}
+}
+
+@Article{Stommel66,
+ author   = {H. Stommel},
+ year   = 1948,
+ title    = {The western intensification of wind-driven ocean currents},
+ journal  = {Trans. Am. Geophys. Union},
+ volume         = {29},
+ pages          = {206},
+      }
+
+@Article{sudm:88,
+ author       = {Y. C. Sud and A. Molod},
+ year         = {1988},
+ title        = {  The roles of dry convection, cloud-radiation feedback processes
+and the influence of recent improvements in the parameterization of convection in the GLA GCM.  },
+ journal      = mwr,
+ volume       = {116},
+ pages        = {2366-2387}
+}
+
+@techreport{taksz:96,
+ author       = {L. L. Takacs and M.J. Suarez},
+ year         = {1996},
+ title        = {  Dynamical aspects of climate simulations Using the GEOS
+General Circulation Model},
+ institution  = {National Aeronautics and Space Administration},
+ type         = {NASA Technical Memorandum},
+ number       = {104606 Volume 10},
+ address      = {NASA; Goddard Space Flight Center; Greenbelt (MD), 20771; USA},
+ note         = {http://www.gmao.nasa.gov/},
+}
+
+
+@Article{thorpe77,
+  author  = {Thorpe, S.A.},
+  title   = {Turbulence and mixing in a Scottish loch},
+  journal = ptrsl,
+  year    = 1977,
+  volume  = {286},
+  pages   = {125--181}
+}
+
+
+@Article{visbeck:97,
+  author =   {M. Visbeck and J. Marshall and T. Haine and M. Spall},
+  title =    {Specification of eddy transfer coefficients in coarse-resolution ocean circulation models},
+  journal =    jpo,
+  year =   1997,
+  volume =   27,
+  number =   3,
+  pages =  {381-402}
+}
+
+@Article{wesson94,
+  author  = {Wesson, J. C. and  Michael C. Gregg},
+  title   = {Mixing at Camarinal Sill in the Strait of Gibraltar},
+  journal = jgr,
+  year    = 1994,
+  volume  = {99 (C5)},
+  pages   = { 9847--9878}
+}
+
+@Article{win00,
+  author      = {Michael Winton},
+  title       = {A reformulated three-layer sea ice model},
+  journal     = jaot,
+  year        = 2000,
+  volume      = 17,
+  pages       = {525--531}
+}
+
+@Article{yagkad:74,
+ author       = {A. M. Yaglom and B. A. Kader},
+ year         = {1974},
+ title        = {Heat and mass transfer between a rough wall and
+turbulent fluid flow at high Reynolds and Peclet numbers.  },
+ journal      = jfm,
+ volume       = {62},
+ pages        = {601-623}
+}
+
+
+v@Article{yam:77,
+ author       = {T. Yamada},
+ year         = {1977},
+ title        = {  A numerical experiment on pollutant dispersion in a horizontally-homogenious
+atmospheric boundary layer.},
+ journal      = {Atmos. Environ.},
+ volume       = {11},
+ pages        = {1015-1024}
+}
+
+
+@Article{zhang97,
+  author =   {Jinlun Zhang and Hibler, III, William D.},
+  title =    {On an Efficient Numerical Method for Modeling Sea Ice Dynamics},
+  journal =    jgr,
+  year =   1997,
+  volume =   102,
+  number =   {C4},
+  pages =  {8691--8702}
+}
+
+
+@Article{zha98a,
+  author =	 {J. Zhang and Hibler, III, W. D. and M. Steele and
+                  D. A. Rothrock},
+  title =	 {Arctic ice-ocean modeling with and without climate
+                  restoring},
+  journal =	 jpo,
+  year =	 1998,
+  volume =	 28,
+  pages =	 {191--217}
+}
+
+@Article{zhouetal:95,
+ author       = {J. Zhou and Y.C. Sud and K.-M. Lau},
+ year         = {1995},
+ title        = {Impact of Orographically Induced Gravity Wave Drag in the GLA GCM},
+ journal      = qjrms,
+ volume       = {122},
+ pages        = {903-927}
+}
+
+
