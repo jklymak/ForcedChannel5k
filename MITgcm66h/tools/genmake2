@@ -1092,21 +1092,6 @@ check_nf90io_mpi_libs()  {
     fi
     echo >> $LOGFILE
     echo "running: check_nf90io_libs()" >> $LOGFILE
-    echo "First looking for hdf5 in nc-config:" >> $LOGFILE
-    echo "running: $NETCDF/bin/nc-config --has-hdf5" >> $LOGFILE
-    if [[ $($NETCDF/bin/nc-config --has-hdf5) != "yes" ]]; then
-      echo "nc-config could not fine hdf5" >> $LOGFILE
-      return
-    fi
-    echo "         ...returns yes" >> $LOGFILE
-
-    echo "Looking for h5pcc:" >> $LOGFILE
-    echo "running: $HDF5/bin/h5pcc -showconfig | grep Parallel" >> $LOGFILE
-    if [[ $($HDF5/bin/h5pcc -showconfig | grep Parallel) != *yes* ]]; then
-      echo "Somehow h5pcc not compiled w/ parallel" >> $LOGFILE
-      return
-    fi
-    echo "         ...returns yes" >> $LOGFILE
 
     # now we check if the parallel tests can actually compile...
     echo "===  f90tst_parallel.f90  >>>" > f90tst_parallel.log
@@ -3788,6 +3773,9 @@ printf "\n\n# DO NOT DELETE\n" >> $MAKEFILE
 
 printf "\n===  Done  ===\n"
 
+echo $ENABLED_PACKAGES
+echo $PACKAGES_DOT_H
+
 # Create special header files
 $BASH $TOOLSDIR/convert_cpp_cmd2defines -bPACKAGES_CONFIG_H "Disabled packages:" $DISABLED_PACKAGES " " "Enabled packages:" $ENABLED_PACKAGES > $PACKAGES_DOT_H".tmp"
 if test ! -f $PACKAGES_DOT_H ; then
@@ -3815,3 +3803,4 @@ if test "x$DUMPSTATE" = xt ; then
 	echo "$i='$t2'" | sed -e 's/  */ /g' >> genmake_state
     done
 fi
+printf "Really Done!"
