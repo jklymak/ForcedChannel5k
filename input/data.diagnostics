@@ -1,0 +1,42 @@
+# diagnostics Package
+
+&diagnostics_list
+# 3D variables.
+ frequency(1)  = -360000,
+ timePhase(1)      =   0,
+ fields(1:6,1) = 'UVEL    ',
+ 	       	       'VVEL    ',
+		             'WVEL    ',
+		             'THETA   ',
+		             'SALT    ',
+		             'PHIHYD  ',
+ filename(1)   = 'spinup'
+#
+ filename(2)   = 'statevars2d'
+ frequency(2)  = -360000,
+ timePhase(2)  = 0,
+ fields(1:2,2) = 'ETAN    ',
+ 	               'PHIBOT  ',
+#
+# 3D variables.  Just output every 30 minutes last hour.  Should be three
+# fields.
+ frequency(3)  = -1800,
+ timePhase(3)  =   720000,
+ fields(1:6,3) = 'UVEL    ',
+ 	       	       'VVEL    ',
+		             'WVEL    ',
+		             'THETA   ',
+		             'SALT    ',
+		             'PHIHYD  ',
+ filename(3)   = 'final'
+#
+ filename(4)   = 'final2d'
+ frequency(4)  = -1800,
+ timePhase(4)  =   720000,
+ fields(1:2,4) = 'ETAN    ',
+ 	               'PHIBOT  ',
+#
+/
+
+&diag_statis_parms
+/

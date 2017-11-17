@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -m be
+#PBS -M jklymak@gmail.com
+#PBS -l walltime=24:00:00
+#PBS -q transfer
+#PBS -A ONRDC35552400
+#PBS -l select=1:ncpus=1
+#PBS -j oe
+#PBS -S /bin/bash
+
+echo "Transfer job LeeWaveCoarse/coarse3dlow01U10 Started"
+cd /scr/jklymak/LeeWaveCoarse
+tar cf coarse3dlow01U10_files.tar  /scr/jklymak/LeeWaveCoarse/coarse3dlow01U10
+gzip coarse3dlow01U10_files.tar
+rsh newton.navo.hpc.mil mkdir /u/home/jklymak/LeeWaveCoarse
+rcp coarse3dlow01U10_files.tar.gz  newton.navo.hpc.mil:/u/home/jklymak/LeeWaveCoarse
+rsh newton.navo.hpc.mil ls -l  /u/home/jklymak/LeeWaveCoarse
+echo "Transfer job LeeWaveCoarse/coarse3dlow01U10 ended"

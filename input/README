@@ -1,0 +1,484 @@
+2017-03-14 23:11:54
+../results/CW3dfilt01U15/_Model/input/
+filt 1 topo; 0.1m/s, KL10; 
+
+2017-03-14 23:11:38
+../results/CW3dfilt01U05/_Model/input/
+filt 1 topo; 0.1m/s, KL10; 
+
+2017-03-14 23:11:11
+../results/CW3dfilt01U02/_Model/input/
+filt 1 topo; 0.1m/s, KL10; 
+
+2017-03-14 23:09:07
+../results/CW3dlow01U15/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-03-07 22:50:47
+../results/CW3dlow01U15/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-03-07 22:50:17
+../results/CW3dlow01U05/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-03-07 22:49:51
+../results/CW3dlow01U02/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-03-07 22:41:35
+../results/CW3dfull01U15/_Model/input/
+full 1 topo; 0.1m/s, KL10; 
+
+2017-03-07 22:40:58
+../results/CW3dfull01U05/_Model/input/
+full 1 topo; 0.1m/s, KL10; 
+
+2017-03-07 22:39:25
+../results/CW3dfull01U02/_Model/input/
+full 1 topo; 0.1m/s, KL10; 
+
+2017-02-24 22:26:50
+../results/CW3dfilt01U10/_Model/input/
+filt 1 topo; 0.1m/s, KL10; 
+
+2017-02-24 22:25:44
+../results/CW3dlow01U10/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-02-24 22:23:31
+../results/CW3dfull01U10/_Model/input/
+full 1 topo; 0.1m/s, KL10; 
+
+2017-01-26 18:59:31
+../results/coarse3dfilt01U10/_Model/input/
+filt 1 topo; 0.1m/s, KL10; 
+
+2017-01-26 18:58:20
+../results/coarse3dfull01U10/_Model/input/
+full 1 topo; 0.1m/s, KL10; 
+
+2017-01-26 18:46:18
+../results/coarse3dlow01U10/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-01-21 17:13:47
+../results/coarse3dfilt01U10/_Model/input/
+filt 1 topo; 0.1m/s, KL10; 
+
+2017-01-21 17:13:03
+../results/coarse3dfull01U10/_Model/input/
+full 1 topo; 0.1m/s, KL10; 
+
+2017-01-21 03:02:13
+../results/coarse3dlow01U10/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-01-20 23:19:11
+../results/coarse3dfull01U10/_Model/input/
+full 1 topo; 0.1m/s, KL10; 
+
+2017-01-20 23:17:02
+../results/coarse3dfilt01U10/_Model/input/
+filt 1 topo; 0.1m/s, KL10; 
+
+2017-01-20 05:17:39
+../results/coarse3dlow01U10/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-01-20 05:00:01
+../results/coarse3dlow01U10/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2017-01-20 04:53:11
+../results/coars3dlow01U10/_Model/input/
+low 1 topo; 0.1m/s, KL10; 
+
+2016-11-15 18:20:30
+../results/lee3dlow06U10/_Model/input/
+low 6 topo; 0.1m/s, KL10; 
+
+2016-11-15 18:19:45
+../results/lee3dfilt06U10/_Model/input/
+filt 6 topo; 0.1m/s, KL10; 
+
+2016-11-15 18:13:47
+../results/lee3dfull06U10/_Model/input/
+full 6 topo; 0.1m/s, KL10; 
+
+2016-11-15 18:05:37
+../results/lee3dlow05U10/_Model/input/
+low 5 topo; 0.1m/s, KL10; 
+
+2016-11-15 18:04:43
+../results/lee3dfilt05U10/_Model/input/
+filt 5 topo; 0.1m/s, KL10; 
+
+2016-11-15 18:03:45
+../results/lee3dfilt04U10/_Model/input/
+filt 4 topo; 0.1m/s, KL10; 
+
+2016-11-15 18:02:06
+../results/lee3dlow04U10/_Model/input/
+low 4 topo; 0.1m/s, KL10; 
+
+2016-11-15 17:54:31
+../results/lee3dlow03U10/_Model/input/
+low 3 topo; 0.1m/s, KL10; 
+
+2016-11-14 04:21:47
+../results/lee3dlow05U10/_Model/input/
+Low 5 Fixed topo; 0.1m/s, KL10; 
+
+2016-11-14 04:19:30
+../results/lee3dfilt05U10/_Model/input/
+Filt 5 Fixed topo; 0.1m/s, KL10; 
+
+2016-11-14 04:17:46
+../results/lee3dfull05U10/_Model/input/
+Full 5 Fixed topo; 0.1m/s, KL10; 
+
+2016-11-14 04:07:03
+../results/lee3dlow04U10/_Model/input/
+Filtered Fixed topo; 0.1m/s, KL10; 
+
+2016-11-14 04:01:52
+../results/lee3dfilt04U10/_Model/input/
+Filtered Fixed topo; 0.1m/s, KL10; 
+
+2016-11-14 03:57:55
+../results/lee3dfull04U10/_Model/input/
+Lowpass Fixed topo; 0.1m/s, KL10; 
+
+2016-11-14 03:21:31
+../results/lee3dlow03U10/_Model/input/
+Lowpass Fixed topo; 0.1m/s, KL10; 
+
+2016-11-14 03:19:47
+../results/lee3dfilt03U10/_Model/input/
+FIltered Fixed topo; 0.1m/s, KL10; 
+
+2016-11-14 03:17:05
+../results/lee3dfull03U10/_Model/input/
+Full Fixed topo; 0.1m/s, KL10; 
+
+2016-11-10 23:08:31
+../results/lee3dlow02U10/_Model/input/
+Full Fixed topo; 0.1m/s, KL10; 
+
+2016-11-10 23:07:34
+../results/lee3dfilt02U10/_Model/input/
+Full Fixed topo; 0.1m/s, KL10; 
+
+2016-11-10 23:06:29
+../results/lee3dfilt02U10/_Model/input/
+Full Fixed topo; 0.1m/s, KL10; 
+
+2016-11-10 23:04:43
+../results/lee3dfilt02U10/_Model/input/
+Full Fixed topo; 0.1m/s, KL10; 
+
+2016-11-10 22:59:17
+../results/lee3dfull02U10/_Model/input/
+Full Fixed topo; 0.1m/s, KL10; 
+
+2016-11-01 20:43:37
+../results/lee3dlow01U10/_Model/input/
+Low-pass topo; 0.1m/s, KL10; 
+
+2016-10-31 20:35:08
+../results/lee3dlow01U10/_Model/input/
+Low-pass topo; 0.1m/s, KL10; 
+
+2016-10-06 22:10:41
+../results/lee3dfullHighVisc/_Model/input/
+Three-d lee waves with steady body force; 0.2m/s, KL10; 
+
+2016-10-06 21:48:43
+../results/lee3dfull01U05/_Model/input/
+Three-d lee waves with steady body force; 0.2m/s, KL10; 
+
+2016-10-06 21:47:33
+../results/lee3dfilt01U05/_Model/input/
+Three-d lee waves with steady body force; 0.2m/s, KL10; 
+
+2016-10-06 21:41:01
+../results/lee3dfilt01U20/_Model/input/
+Three-d lee waves with steady body force; 0.2m/s, KL10; 
+
+2016-10-06 21:39:00
+../results/lee3dfull01U20/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme; No KL10; High Viscosity
+
+2016-08-26 21:26:56
+../results/lee3dfull01U20/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme; No KL10; High Viscosity
+
+2016-08-26 21:26:12
+../results/lee3dfilt01U20/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme; No KL10; High Viscosity
+
+2016-08-26 21:23:37
+../results/lee3dfilt01U05/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme; No KL10; High Viscosity
+
+2016-08-26 21:18:37
+../results/lee3dfilt01U05/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme; No KL10; High Viscosity
+
+2016-08-26 21:18:00
+../results/lee3dfull01U05/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme; No KL10; High Viscosity
+
+2016-08-26 16:32:23
+../results/lee3dfullHighVisc/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme; No KL10; High Viscosity
+
+2016-08-25 23:18:47
+../results/lee3dfullHighVisc/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme; No KL10; High Viscosity
+
+2016-08-25 16:37:32
+../results/lee3dfullSecOr/_Model/input/
+Three-d lee waves with steady body force; 0.1m/s, second order scheme
+
+2016-08-24 17:09:46
+../results/lee3dfull01U05/_Model/input/
+Three-d lee waves with steady body force; bandpasspass; half forcing
+
+2016-08-24 17:08:49
+../results/lee3dfull01U20/_Model/input/
+Three-d lee waves with steady body force; bandpasspass; half forcing
+
+2016-08-24 17:07:05
+../results/lee3dfilt01U20/_Model/input/
+Three-d lee waves with steady body force; bandpasspass; half forcing
+
+2016-08-24 17:05:37
+../results/lee3dfilt01U05/_Model/input/
+Three-d lee waves with steady body force; bandpasspass; half forcing
+
+2016-06-18 01:55:49
+../results/lee3dfilt01/_Model/input/
+Three-d lee waves with steady body force; bandpasspass
+
+2016-06-17 17:53:31
+../results/lee3dfilt01/_Model/input/
+Three-d lee waves with steady body force; bandpasspass
+
+2016-06-17 17:52:51
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No bandpass
+
+2016-06-15 16:28:04
+../results/lee3dscpuio/_Model/input/
+Three-d lee waves with steady body force; Band pass
+
+2016-06-13 21:13:09
+../results/lee3dfilt01/_Model/input/
+Three-d lee waves with steady body force; Band pass
+
+2016-06-10 22:08:06
+../results/lee3dfull02/_Model/input/
+Three-d lee waves with steady body force; Band pass
+
+2016-06-10 21:47:46
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 20:37:00
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 14:54:31
+../results/lee3dfull02/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 14:53:49
+../results/lee3dfull02/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 14:51:09
+../results/lee3dfull02/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 14:35:55
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 03:19:58
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 02:50:01
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 02:28:51
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 02:11:30
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 02:01:44
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-13 01:38:34
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 22:48:10
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 20:14:21
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 17:28:34
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 17:11:44
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 04:19:07
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 04:17:20
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 04:15:05
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 01:58:55
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 01:58:13
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 01:57:33
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 01:56:44
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-12 01:54:39
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 22:45:48
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 22:44:57
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 22:43:13
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 22:42:58
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 22:40:53
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 22:26:49
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 22:26:18
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 22:24:23
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 21:44:11
+../results/lee3dfull01/_Model/input/
+Three-d lee waves with steady body force; No band pass
+
+2015-06-11 21:18:29
+../results/lee2d03/_Model/input/
+Two-d lee waves with steady body force; No band pass
+
+2015-06-11 04:24:47
+../results/lee2d03/_Model/input/
+Two-d lee waves with steady body force; No band pass
+
+2015-06-11 04:21:44
+../results/lee2d02/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b.  Fixed the topography routine so this one should be correct.
+
+2015-06-11 04:18:53
+../results/lee2d02/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b.  Fixed the topography routine so this one should be correct.
+
+2015-06-10 20:13:06
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-10 18:23:28
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-10 18:00:07
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-10 17:13:19
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-10 15:55:42
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-10 05:12:17
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-10 04:58:31
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-10 00:47:12
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-09 22:30:45
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-09 22:29:39
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-09 22:29:16
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-09 22:28:16
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
+2015-06-09 22:24:37
+../results/lee2d01/_Model/input/
+Two-d lee waves with steady body force; filtered topo as per NF11b
+
