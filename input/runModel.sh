@@ -2,7 +2,7 @@
 #PBS -m be
 #PBS -M jklymak@gmail.com
 #PBS -l select=1:ncpus=16:mpiprocs=16
-#PBS -l walltime=1:10:00
+#PBS -l walltime=5:10:00
 #PBS -q standard
 #PBS -A ONRDC35552400
 #PBS -j oe
