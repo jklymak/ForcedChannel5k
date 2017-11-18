@@ -56,7 +56,7 @@
 # nTimeSteps=480,
  endTime=723700,
 # endTime=10800,
- deltaT=20.,
+ deltaT=100.,
  abEps=0.1,
  pChkptFreq=72000.0,
  chkptFreq=0.,
@@ -81,5 +81,5 @@
 # vVelInitFile='../indata/V.init',
 # pSurfInitFile='../indata/Eta.init',
  bathyFile='../indata/topog.bin',
- mdsioLocalDir='../../',
+ mdsioLocalDir='./junk',
  /

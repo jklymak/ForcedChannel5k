@@ -23,7 +23,7 @@ K0 = 1.8e-4/2./np.pi
 runtype = 'low'  # 'full','filt','low'
 setupname=''
 u0 = 10
-runname='LW1km%sU%dAmp%dK%d'%(runtype,u0, amp, K0 * 2 *np.pi * 1e5)
+runname='LW16core100s1km%sU%dAmp%dK%d'%(runtype,u0, amp, K0 * 2 *np.pi * 1e5)
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
