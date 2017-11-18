@@ -207,7 +207,7 @@ C     JMK: Mean flow in x direction.
 
       spinup = 17.5*3600.*1.01
 C      spinup = 100.
-      U0=0.15*MIN(myTime/spinup,1.)
+      U0=0.1*MIN(myTime/spinup,1.)
 C      WRITE(msgBuf,'(E10.4)')  U0
 C      CALL PRINT_MESSAGE( msgBuf, standardMessageUnit, SQUEEZE_RIGHT,
 C     $     myThid )

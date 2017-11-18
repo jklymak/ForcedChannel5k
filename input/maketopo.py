@@ -15,22 +15,18 @@ So I think we want 128*32 in x = 4096 and 74*16 in y = 1184
 """
 
 
-dx0 = 100.
-dy0 = 100.
-maxx = 409600
-maxy = 118400
-
-
 def getTopo2D(dx, maxx, dy, maxy,
               mu=3.5, K0=1.8e-4/2./np.pi, L0=1.8e-4/2./np.pi,
               amp=155., kmax=1./300., kmin=1./6000., seed=None):
 
     k = np.arange(-1./dx/2., 1./dx/2.,1./maxx) # k is cycles per m
-    l = np.arange(-1./dx/2., 1./dy/2.,1./maxy) # k is cycles per m
+    l = np.arange(-1./dy/2., 1./dy/2.,1./maxy) # k is cycles per m
     x = np.arange(0.,maxx,dx)
     y = np.arange(0.,maxy,dy)
-    _log.debug(len(x))
-    _log.debug(len(k))
+    _log.debug('Len(x) %d', len(x))
+    _log.debug('Len(k) %d', len(k))
+    _log.debug('Len(y) %d', len(y))
+    _log.debug('Len(l) %d', len(l))
 
     dk = 1./maxx
     dl = 1./maxy
@@ -85,6 +81,11 @@ def getTopo2D(dx, maxx, dy, maxy,
 
 
 if __name__ == "__main__":
+    dx0 = 100.
+    dy0 = 100.
+    maxx = 409600
+    maxy = 118400
+
     xh,yh,h,hband,hlow,k,l,P,Pband,Plow=getTopo2D(dx0,maxx,dy0,maxy,amp=305.,kmin=1./6000.,kmax=1./300.)
 
     # h0 is the full spectrum

@@ -12,7 +12,9 @@ import shutil,os,glob
 import scipy.signal as scisig
 from maketopo import getTopo2D
 import logging
-logging.basicConfig(level=logging.INFO)
+
+logging.basicConfig(level=logging.DEBUG)
+
 _log = logging.getLogger(__name__)
 
 runnum = 1
@@ -59,6 +61,7 @@ nx = 8*52
 ny = 2*64
 nz = 400
 
+_log.info('nx %d ny %d', nx, ny)
 
 def lininc(n,Dx,dx0):
     a=(Dx-n*dx0)*2./n/(n+1)
@@ -118,7 +121,7 @@ _log.info(outdir+'/../build/')
 mkdir(outdir+'/../build/')
 
 # copy any data that is in the local indata
-#shutil.copytree('../indata/', outdir+'/../indata/')
+shutil.copytree('../indata/', outdir+'/../indata/')
 
 shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv')
 shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
@@ -174,6 +177,7 @@ y=y-y[0]
 maxy=np.max(y)
 _log.info('YCoffset=%1.4f'%y[0])
 
+_log.info('dx %f dy %f', dx[0], dy[0])
 
 
 # save dx and dy
@@ -195,10 +199,15 @@ fig.savefig(outdir+'/figs/dx.pdf')
 d=zeros((ny,nx))
 # we will add a seed just in case we want to redo this exact phase later...
 seed = 20171117
-x, y, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(dx, maxx, dy, maxy,
+xtopo, ytopo, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(
+        dx[0], maxx+dx[0],
+        dy[0],maxy+dy[0],
         mu=3.5, K0=1.8e-4/2./np.pi, L0=1.8e-4/2./np.pi,
        amp=155., kmax=1./300., kmin=1./6000., seed=seed)
-d = hlow
+_log.info('shape(hlow): %s', np.shape(hlow))
+_log.info('maxx %f dx[0] %f maxx/dx %f nx %d', maxx, dx[0], maxx/dx[0], nx)
+_log.info('maxxy %f dy[0] %f maxy/dy %f ny %d', maxy, dy[0], maxy/dy[0], ny)
+d = np.real(hlow)
 d=d-H
 
 with open(indir+"/topog.bin", "wb") as f:
@@ -208,7 +217,7 @@ f.close()
 _log.info(shape(d))
 
 fig, ax = plt.subplots(2,1)
-_log.info(shape(x),shape(d))
+_log.info('%s %s', shape(x),shape(d))
 ax[0].plot(x/1.e3,d[0,:].T)
 pcm=ax[1].pcolormesh(x/1.e3,y/1.e3,d,rasterized=True)
 fig.colorbar(pcm,ax=ax[1])
