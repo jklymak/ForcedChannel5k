@@ -16,16 +16,16 @@
 cd $PBS_O_WORKDIR
 # top=$1  Passed as qsub  -v top=h60h27f20 runModel.sh
 
-PARENT=LWCoarse2
+PARENT=AbHillParam
 
 top=${PBS_JOBNAME}
 results=${WORKDIR}/${PARENT}/
 outdir=$results$top
 
 # These should already be copied
-#cp data $outdir/_Model/input
+cp data $outdir/_Model/input
 #cp eedata $outdir/_Model/input
-cp dataRestart $outdir/_Model/input/data
+#cp dataRestart $outdir/_Model/input/data
 #cp ../build/mitgcmuv $outdir/_Model/build
 
 #printf "Copying to archive"
@@ -38,4 +38,4 @@ pwd
 
 ls -al ../build/mitgcmuv
 printf "Starting: $outdir\n"
-mpirun -np 32 ../build/mitgcmuv > mit.out
+aprun -n 32 ../build/mitgcmuv > mit.out

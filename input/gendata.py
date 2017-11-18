@@ -18,11 +18,13 @@ logging.basicConfig(level=logging.DEBUG)
 _log = logging.getLogger(__name__)
 
 runnum = 1
+amp = 155.
+K0 = 1.8e-4/2./np.pi 
 runtype = 'low'  # 'full','filt','low'
 setupname=''
 u0 = 10
-runname='LW1km%s%02dU%02d'%(runtype,runnum,u0)
-comments='%s %d topo; 0.1m/s, KL10; '%(runtype,runnum)
+runname='LW1km%sU%dAmp%dK%d'%(runtype,u0, amp, K0 * 2 *np.pi * 1e5)
+comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
 
@@ -202,8 +204,8 @@ seed = 20171117
 xtopo, ytopo, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(
         dx[0], maxx+dx[0],
         dy[0],maxy+dy[0],
-        mu=3.5, K0=1.8e-4/2./np.pi, L0=1.8e-4/2./np.pi,
-       amp=155., kmax=1./300., kmin=1./6000., seed=seed)
+        mu=3.5, K0=K0, L0=K0,
+       amp=amp, kmax=1./300., kmin=1./6000., seed=seed)
 _log.info('shape(hlow): %s', np.shape(hlow))
 _log.info('maxx %f dx[0] %f maxx/dx %f nx %d', maxx, dx[0], maxx/dx[0], nx)
 _log.info('maxxy %f dy[0] %f maxy/dy %f ny %d', maxy, dy[0], maxy/dy[0], ny)
