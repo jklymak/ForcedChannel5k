@@ -23,14 +23,14 @@ K0 = 1.8e-4/2./np.pi
 runtype = 'low'  # 'full','filt','low'
 setupname=''
 u0 = 10
-runname='LW1km%sU%dAmp%dK%d'%(runtype,u0, amp, K0 * 2 *np.pi * 1e5)
+runname='LW16core1km%sU%dAmp%dK%d'%(runtype,u0, amp, K0 * 2 *np.pi * 1e5)
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
 
 outdir0='../results/'+runname+'/'
 
-indir =outdir0+'_Model/indata/'
+indir =outdir0+'indata/'
 
 ## Params for below as per Nikurashin and Ferrari 2010b
 H = 4000.
@@ -86,7 +86,7 @@ if backupmodel:
 
     _log.info(outdir0+' Exists')
 
-  outdir=outdir0+'_Model/'
+  outdir=outdir0
   try:
     mkdir(outdir)
   except:
@@ -103,7 +103,7 @@ if backupmodel:
 
   copy('gendata.py',outdir)
 else:
-  outdir=outdir+'_Model/input/'
+  outdir=outdir+'input/'
 
 ## Copy some other files
 _log.info( "Copying files")
@@ -306,8 +306,8 @@ try:
 except:
     pass
 
-shutil.copytree(outdir0+'/_Model/input/', '../archive/'+runname+'/input')
-shutil.copytree(outdir0+'/_Model/python/', '../archive/'+runname+'/python')
-shutil.copytree(outdir0+'/_Model/code', '../archive/'+runname+'/code')
+shutil.copytree(outdir0+'/input/', '../archive/'+runname+'/input')
+shutil.copytree(outdir0+'/python/', '../archive/'+runname+'/python')
+shutil.copytree(outdir0+'/code', '../archive/'+runname+'/code')
 
 exit()

@@ -64,6 +64,7 @@
  dumpInitAndLast=.FALSE.
  monitorFreq=3600.,
  monitorSelect=2,
+ rwSuffixType=2 
 /
 
 # Gridding parameters
@@ -81,5 +82,5 @@
 # vVelInitFile='../indata/V.init',
 # pSurfInitFile='../indata/Eta.init',
  bathyFile='../indata/topog.bin',
- mdsioLocalDir='../../',
+ mdsioLocalDir='./junk/',
  /
