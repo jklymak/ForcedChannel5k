@@ -64,6 +64,7 @@
  dumpInitAndLast=.FALSE.
  monitorFreq=3600.,
  monitorSelect=2,
+ rwSuffixType=2
 /
 
 # Gridding parameters
