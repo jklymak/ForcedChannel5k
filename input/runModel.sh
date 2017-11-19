@@ -2,14 +2,13 @@
 #PBS -m be
 #PBS -M jklymak@gmail.com
 #PBS -l select=1:ncpus=16:mpiprocs=16
-#PBS -l walltime=5:10:00
+#PBS -l walltime=04:10:00
 #PBS -q standard
 #PBS -A ONRDC35552400
 #PBS -j oe
 #PBS -N ${JOBNAME}
 
-
-# This takes 53 minutes  for 10 h, so 200 h = 17.67h
+# 200 h takes 3.05 hours.  
 #
 
 
@@ -23,7 +22,7 @@ results=${WORKDIR}/${PARENT}/
 outdir=$results$top
 
 # These should already be copied
-cp data $outdir/_Model/input
+cp data $outdir/input
 #cp eedata $outdir/_Model/input
 #cp dataRestart $outdir/_Model/input/data
 #cp ../build/mitgcmuv $outdir/_Model/build
@@ -33,7 +32,7 @@ cp data $outdir/_Model/input
 #cp -r $outdir/_Model/ ../archive/$top
 #rm -rf ../archive/$top/indata/*
 
-cd $outdir/_Model/input
+cd $outdir/input
 pwd
 
 ls -al ../build/mitgcmuv

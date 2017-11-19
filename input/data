@@ -58,7 +58,7 @@
 # endTime=10800,
  deltaT=100.,
  abEps=0.1,
- pChkptFreq=72000.0,
+ pChkptFreq=144000.0,
  chkptFreq=0.,
  dumpFreq=0,
  dumpInitAndLast=.FALSE.
@@ -82,5 +82,5 @@
 # vVelInitFile='../indata/V.init',
 # pSurfInitFile='../indata/Eta.init',
  bathyFile='../indata/topog.bin',
- mdsioLocalDir='./junk',
+ mdsioLocalDir='./junk/',
  /

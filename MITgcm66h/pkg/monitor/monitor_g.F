@@ -175,13 +175,15 @@ C     & mon_write_mnc (since it is the only thread that uses those flags):
      &             '============================='
             CALL PRINT_MESSAGE( msgBuf, mon_ioUnit, SQUEEZE_RIGHT , 1)
           ENDIF
-
+	  print *,"FLUSH!"
+	  call flush(standardMessageUnit)
           mon_write_stdout = .FALSE.
           mon_write_mnc    = .FALSE.
 
 C--   endif master cpu io
         ENDIF
 
+      call flush(standardMessageUnit)
 C     endif different multiple
       ENDIF
 
