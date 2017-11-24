@@ -18,8 +18,8 @@ logging.basicConfig(level=logging.DEBUG)
 _log = logging.getLogger(__name__)
 
 runnum = 1
-amp = 155.
-K0 = 1.8e-4/2./np.pi 
+amp = 305.
+K0 = 1.8e-4/2./np.pi
 runtype = 'low'  # 'full','filt','low'
 setupname=''
 u0 = 10
@@ -209,8 +209,12 @@ xtopo, ytopo, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(
 _log.info('shape(hlow): %s', np.shape(hlow))
 _log.info('maxx %f dx[0] %f maxx/dx %f nx %d', maxx, dx[0], maxx/dx[0], nx)
 _log.info('maxxy %f dy[0] %f maxy/dy %f ny %d', maxy, dy[0], maxy/dy[0], ny)
-d = np.real(hlow)
-d=d-H
+
+h = np.real(h - np.min(h))
+# hband = np.real(hband - np.mean(hband)+np.mean(h))
+hlow = np.real(hlow - np.mean(hlow) + np.mean(h))
+
+d= hlow - H
 
 with open(indir+"/topog.bin", "wb") as f:
   d.tofile(f)
