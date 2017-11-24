@@ -54,15 +54,17 @@
  &PARM03
  nIter0=0,
 # nTimeSteps=480,
- endTime=720000,
+ endTime=723700,
 # endTime=10800,
- deltaT=20.,
+ deltaT=100.,
  abEps=0.1,
- pChkptFreq=72000.0,
+ pChkptFreq=144000.0,
  chkptFreq=0.,
- dumpFreq=36000,
+ dumpFreq=0,
+ dumpInitAndLast=.FALSE.
  monitorFreq=3600.,
  monitorSelect=2,
+ rwSuffixType=2
 /
 
 # Gridding parameters
@@ -80,5 +82,5 @@
 # vVelInitFile='../indata/V.init',
 # pSurfInitFile='../indata/Eta.init',
  bathyFile='../indata/topog.bin',
- mdsioLocalDir='../../',
+ mdsioLocalDir='./junk/',
  /
