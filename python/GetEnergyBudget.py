@@ -17,11 +17,17 @@ logging.basicConfig(level=logging.DEBUG)
 
 print(len(sys.argv))
 print(sys.argv)
-if len(sys.argv)==3:
+if len(sys.argv)>=3:
     pre = sys.argv[1]
     U0  = float(sys.argv[2])
+    N0=1e-3
+    f0=1.e-4
+if len(sys.argv)>=4:
+    N0  = float(sys.argv[3])/10000
+if len(sys.argv)>=5:
+    f0=float(sys.argv[4])/1000000
 else:
-    sys.exit('GetEnergyBudget.py prefix U0')
+    sys.exit('GetEnergyBudget.py prefix U0 N0 f0')
 
 print(U0)
 
@@ -30,11 +36,10 @@ submean = True
 
 v0 = np.array([0.,0.,0.])
 u0 = np.array([0.,0.,0.])
-dss = xr.open_dataset('../results/final.nc',
+dss = xr.open_dataset('../results/%s/input/final.nc' % pre,
         chunks={'record':1, 'i': 30, 'i_g': 30})
 
 for i in range(3):
-    N0=1e-3
     g=9.8
     alpha = 2e-4
     nz = dss['Z'].size
@@ -88,7 +93,6 @@ energy[1]['dWPdz'] = -dWPz
 print(energy[1].keys())
 print('Starting Body Force')
 ## Get the body force....
-f0=1.e-4
 # clean up...
 ## sizes wrong here....
 V = xr.DataArray(0.5*(ds['VVEL'] + ds.VVEL.roll(j_g=1)).data,
@@ -248,7 +252,7 @@ if 0:
     print(energy[1])
 
 # WRITE as a dumb pickle
-name='EnergyDemean'+pre+'.pickle'
+name='../reduceddata/EnergyDemean'+pre+'.pickle'
 print('Writing '+name)
 with open(name,'wb') as f:
     pickle.dump(energy,f)
@@ -258,7 +262,6 @@ dEdt += (energy[-1]['PE'] - energy[0]['PE'])*9.8/4.0
 dEdt = dEdt/3600.
 
 resid = -dEdt+energy[1]['Bf']-energy[1]['dWPdz']
-print(resid)
 ennc = xr.Dataset(data_vars={'Bf': (['Z'], energy[1]['Bf']),
                             'dWPdz': (['Z'], energy[1]['dWPdz']),
                             # 'eps': (['Z'], energy[1]['eps'][0]),
@@ -267,5 +270,8 @@ ennc = xr.Dataset(data_vars={'Bf': (['Z'], energy[1]['Bf']),
                             'area': (energy[1]['area'])
                             },
                  coords={'Z': (energy[1]['Z'])})
-name='EnergyDemean'+pre+'.nc'
+name='../reduceddata/EnergyDemean'+pre+'.nc'
 ennc.to_netcdf(name)
+# try to copy over to valdez
+# bah doesnt work :-(
+# subprocess.call(['scp', name, 'valdez:AbHillParam/reduceddata')

@@ -12,6 +12,8 @@ import shutil,os,glob
 import scipy.signal as scisig
 from maketopo import getTopo2D
 import logging
+from replace_data import replace_data
+
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -20,10 +22,13 @@ _log = logging.getLogger(__name__)
 runnum = 1
 amp = 305.
 K0 = 1.8e-4/2./np.pi
+L0 = 1.8e-4/2./np.pi
 runtype = 'low'  # 'full','filt','low'
 setupname=''
 u0 = 10
-runname='LW1km%sU%dAmp%dK%d'%(runtype,u0, amp, K0 * 2 *np.pi * 1e5)
+N0 = 1e-3
+f0 = 1.410e-4
+runname='LW1km%sU%dAmp%df%03d'%(runtype,u0, amp, f0*1000000)
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
@@ -35,8 +40,6 @@ indir =outdir0+'/indata/'
 ## Params for below as per Nikurashin and Ferrari 2010b
 H = 4000.
 U0 = u0/100.
-N0 = 1.e-3
-f0 = 1.e-4
 
 # need some info.  This comes from `leewave3d/EmbededRuns.ipynb` on `valdez.seos.uvic.ca`
 # the maxx and maxy are for finer scale runs.
@@ -44,6 +47,10 @@ dx0=100.
 dy0=100.
 maxx = 409600.0
 maxy = 118400.0
+
+# reset f0 in data
+shutil.copy('data', 'dataF')
+replace_data('dataF', 'f0', '%1.3e'%f0)
 
 
 # topography parameters:
@@ -128,7 +135,7 @@ shutil.copytree('../indata/', outdir+'/../indata/')
 shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv')
 shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
 shutil.copy('../build/Makefile', outdir+'/../build/Makefile')
-shutil.copy('data', outdir+'/data')
+shutil.copy('dataF', outdir+'/data')
 shutil.copy('eedata', outdir)
 shutil.copy('data.kl10', outdir)
 try:
@@ -204,7 +211,7 @@ seed = 20171117
 xtopo, ytopo, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(
         dx[0], maxx+dx[0],
         dy[0],maxy+dy[0],
-        mu=3.5, K0=K0, L0=K0,
+        mu=3.5, K0=K0, L0=L0,
        amp=amp, kmax=1./300., kmin=1./6000., seed=seed)
 _log.info('shape(hlow): %s', np.shape(hlow))
 _log.info('maxx %f dx[0] %f maxx/dx %f nx %d', maxx, dx[0], maxx/dx[0], nx)
@@ -256,6 +263,15 @@ plt.clf()
 plt.plot(T0,z)
 plt.savefig(outdir+'/figs/TO.pdf')
 
+###########################
+# velcoity data
+aa = np.zeros((nz,ny,nx))
+for i in range(nx):
+    aa[:,:,i]=U0
+with open(indir+"/Uinit.bin", "wb") as f:
+    aa.tofile(f)
+
+
 ########################
 # RBCS sponge and forcing
 # In data.rbcs, we have set tauRelaxT=17h = 61200 s
@@ -279,6 +295,8 @@ _log.info(shape(aa))
 with open(indir+"/Tforce.bin", "wb") as f:
     aa.tofile(f)
 f.close()
+
+
 
 ###### Manually make the directories
 #for aa in range(128):

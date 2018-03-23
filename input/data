@@ -54,9 +54,9 @@
  &PARM03
  nIter0=0,
 # nTimeSteps=480,
- endTime=723700,
+ endTime=903700,
 # endTime=10800,
- deltaT=100.,
+ deltaT=50.,
  abEps=0.1,
  pChkptFreq=144000.0,
  chkptFreq=0.,
@@ -78,7 +78,7 @@
 # Input datasets
  &PARM05
 # hydrogThetaFile='../indata/T.init',
-# uVelInitFile='../indata/U.init',
+uVelInitFile='../indata/Uinit.bin',
 # vVelInitFile='../indata/V.init',
 # pSurfInitFile='../indata/Eta.init',
  bathyFile='../indata/topog.bin',

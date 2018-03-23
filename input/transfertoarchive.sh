@@ -2,24 +2,24 @@
 #PBS -m be
 #PBS -M jklymak@gmail.com
 #PBS -l select=1:ncpus=1
-#PBS -l walltime=12:00:00
+#PBS -l walltime=00:20:00
 #PBS -q transfer
 #PBS -A ONRDC35552400
 #PBS -j oe
 
-TOP=LeeWave3d
+# run as qsub -N LW1kmlowU10Amp305K18 transfertoarchive
+TOP=AbHillParam
 #TODO=Shelf1km01
 
 TODO=${PBS_JOBNAME}
 
 cd ${WORKDIR}/${TOP}
-tar cfv ${TODO}_files.tar  ${WORKDIR}/${TOP}/${TODO}
-gzip ${TODO}_files.tar
-rsh ${ARCHIVE_HOST} mkdir ${ARCHIVE_HOME}/${TOP}
-rcp ${TODO}_files.tar.gz  ${ARCHIVE_HOST}:${ARCHIVE_HOME}/${TOP}
-rsh ${ARCHIVE_HOST} ls -l --block-size=M ${ARCHIVE_HOME}/${TOP}
-echo "Transfer job ${TOP}/${TODO} ended"
-rm ${TODO}_files.tar.gz
+tar cfv ${TODO}.tar ${TODO}
+archive put -C ${TOP} ${TODO}.tar
+archive ls -halt ${TOP}
+rm ${TODO}.tar
+echo "Transfer job ${TOP}/${TODO}.tar ended"
+
 # run from subModelTransfer.sh
 
 # can run as depend:
