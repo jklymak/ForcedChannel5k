@@ -45,7 +45,7 @@ U0 = u0/100.
 # the maxx and maxy are for finer scale runs.
 dx0=100.
 dy0=100.
-maxx = 409600.0
+maxx = 409600.0 * 3.0
 maxy = 118400.0
 
 # reset f0 in data
@@ -66,7 +66,7 @@ elif runtype=='low':
 
 
 # model size
-nx = 8*52
+nx = 16*78
 ny = 2*64
 nz = 400
 
@@ -132,33 +132,34 @@ mkdir(outdir+'/../build/')
 # copy any data that is in the local indata
 shutil.copytree('../indata/', outdir+'/../indata/')
 
-shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv')
-shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
-shutil.copy('../build/Makefile', outdir+'/../build/Makefile')
-shutil.copy('dataF', outdir+'/data')
-shutil.copy('eedata', outdir)
-shutil.copy('data.kl10', outdir)
-try:
-  shutil.copy('data.kpp', outdir)
-except:
-  pass
-#shutil.copy('data.rbcs', outdir)
-try:
-    shutil.copy('data.obcs', outdir)
-except:
-    pass
-try:
-  shutil.copy('data.diagnostics', outdir)
-except:
-  pass
-try:
-  shutil.copy('data.pkg', outdir+'/data.pkg')
-except:
-  pass
-try:
-  shutil.copy('data.rbcs', outdir+'/data.rbcs')
-except:
-  pass
+if 0:
+    shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv')
+    shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
+    shutil.copy('../build/Makefile', outdir+'/../build/Makefile')
+    shutil.copy('dataF', outdir+'/data')
+    shutil.copy('eedata', outdir)
+    shutil.copy('data.kl10', outdir)
+    try:
+      shutil.copy('data.kpp', outdir)
+    except:
+      pass
+    #shutil.copy('data.rbcs', outdir)
+    try:
+        shutil.copy('data.obcs', outdir)
+    except:
+        pass
+    try:
+      shutil.copy('data.diagnostics', outdir)
+    except:
+      pass
+    try:
+      shutil.copy('data.pkg', outdir+'/data.pkg')
+    except:
+      pass
+    try:
+      shutil.copy('data.rbcs', outdir+'/data.rbcs')
+    except:
+      pass
 
 _log.info("Done copying files")
 
@@ -169,6 +170,8 @@ _log.info("Done copying files")
 ##### Dx ######
 
 dx = zeros(nx)+maxx/nx
+
+print(len(dx))
 
 # dx = zeros(nx)+100.
 x=np.cumsum(dx)
@@ -209,7 +212,7 @@ d=zeros((ny,nx))
 # we will add a seed just in case we want to redo this exact phase later...
 seed = 20171117
 xtopo, ytopo, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(
-        dx[0], maxx+dx[0],
+        dx[0], maxx+dx[0]/2.,
         dy[0],maxy+dy[0],
         mu=3.5, K0=K0, L0=L0,
        amp=amp, kmax=1./300., kmin=1./6000., seed=seed)
@@ -218,8 +221,19 @@ _log.info('maxx %f dx[0] %f maxx/dx %f nx %d', maxx, dx[0], maxx/dx[0], nx)
 _log.info('maxxy %f dy[0] %f maxy/dy %f ny %d', maxy, dy[0], maxy/dy[0], ny)
 
 h = np.real(h - np.min(h))
+#
+# put in an envelope:
+
+xenvelope = np.zeros(nx) + 0.07
+xenvelope[400:(nx-400)] = 1.
+ind = range(340,400)
+xenvelope[ind] = np.linspace(0.07, 1, len(ind))
+xenvelope[int(nx/2):] = xenvelope[:int(nx/2)][::-1]
+
 # hband = np.real(hband - np.mean(hband)+np.mean(h))
 hlow = np.real(hlow - np.mean(hlow) + np.mean(h))
+h = h * xenvelope[np.newaxis, :]
+hlow = hlow * xenvelope[np.newaxis, :]
 
 d= hlow - H
 
@@ -232,6 +246,8 @@ _log.info(shape(d))
 fig, ax = plt.subplots(2,1)
 _log.info('%s %s', shape(x),shape(d))
 ax[0].plot(x/1.e3,d[0,:].T)
+ax[0].plot(x/1.e3,xenvelope*1000-4000)
+
 pcm=ax[1].pcolormesh(x/1.e3,y/1.e3,d,rasterized=True)
 fig.colorbar(pcm,ax=ax[1])
 fig.savefig(outdir+'/figs/topo.png')
