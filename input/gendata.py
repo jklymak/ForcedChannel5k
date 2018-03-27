@@ -27,8 +27,8 @@ runtype = 'low'  # 'full','filt','low'
 setupname=''
 u0 = 10
 N0 = 1e-3
-f0 = 1.410e-4
-runname='LW1km%sU%dAmp%df%03d'%(runtype,u0, amp, f0*1000000)
+f0 = 1.0e-4
+runname='LW1kmLong%sU%d'%(u0, amp)
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
