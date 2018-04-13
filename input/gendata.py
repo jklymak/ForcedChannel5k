@@ -28,7 +28,7 @@ setupname=''
 u0 = 10
 N0 = 1e-3
 f0 = 1.0e-4
-runname='LW1kmLong%sU%d'%(u0, amp)
+runname='ChannelCoarse01'
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
@@ -38,20 +38,13 @@ outdir0='../results/'+runname+'/'
 indir =outdir0+'/indata/'
 
 ## Params for below as per Nikurashin and Ferrari 2010b
-H = 4000.
+H = 3400.
+H0 = 3000
 U0 = u0/100.
 
-# need some info.  This comes from `leewave3d/EmbededRuns.ipynb` on `valdez.seos.uvic.ca`
-# the maxx and maxy are for finer scale runs.
-dx0=100.
-dy0=100.
-maxx = 409600.0 * 3.0
-maxy = 118400.0
-
 # reset f0 in data
-shutil.copy('data', 'dataF')
-replace_data('dataF', 'f0', '%1.3e'%f0)
-
+# shutil.copy('data', 'dataF')
+# replace_data('dataF', 'f0', '%1.3e'%f0)
 
 # topography parameters:
 useFiltTop=False
@@ -64,18 +57,15 @@ if runtype=='filt':
 elif runtype=='low':
     useLowTopo=True
 
-
 # model size
-nx = 16*78
-ny = 2*64
-nz = 400
+# 1500 km x 500 km
+# 10 km horizontal scale:
+
+nx = 4*40
+ny = 2*26
+nz = 340
 
 _log.info('nx %d ny %d', nx, ny)
-
-def lininc(n,Dx,dx0):
-    a=(Dx-n*dx0)*2./n/(n+1)
-    dx = dx0+arange(1.,n+1.,1.)*a
-    return dx
 
 
 #### Set up the output directory
@@ -132,11 +122,11 @@ mkdir(outdir+'/../build/')
 # copy any data that is in the local indata
 shutil.copytree('../indata/', outdir+'/../indata/')
 
-if 0:
+try:
     shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv')
     shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
     shutil.copy('../build/Makefile', outdir+'/../build/Makefile')
-    shutil.copy('dataF', outdir+'/data')
+    shutil.copy('data', outdir+'/data')
     shutil.copy('eedata', outdir)
     shutil.copy('data.kl10', outdir)
     try:
@@ -160,6 +150,8 @@ if 0:
       shutil.copy('data.rbcs', outdir+'/data.rbcs')
     except:
       pass
+except:
+    _log.warning('Not copying files for some reason')
 
 _log.info("Done copying files")
 
@@ -169,8 +161,7 @@ _log.info("Done copying files")
 
 ##### Dx ######
 
-dx = zeros(nx)+maxx/nx
-
+dx = zeros(nx)+10e3
 print(len(dx))
 
 # dx = zeros(nx)+100.
@@ -181,7 +172,7 @@ _log.info('XCoffset=%1.4f'%x[0])
 
 ##### Dy ######
 
-dy = zeros(ny)+maxy/ny
+dy = zeros(ny)+10e3
 
 # dx = zeros(nx)+100.
 y=np.cumsum(dy)
@@ -209,6 +200,19 @@ fig.savefig(outdir+'/figs/dx.pdf')
 ######## Bathy ############
 # get the topo:
 d=zeros((ny,nx))
+h0 = 1000
+sig = 75e3
+
+d = d + h0 * np.exp(-((x-x.mean())/sig)**2)[np.newaxis, :]
+d = -H0 + d
+# now do the edges:
+dedge = np.zeros((ny, nx)) - H0
+ind = np.where(y<50e3)[0]
+dedge[ind,:] = -((y[ind])*(H0)/50e3)[:, np.newaxis]
+dedge[-ind,:] = -(((y[-1]-y[-ind]))*(H0)/50e3)[:, np.newaxis]
+d[dedge>d] = dedge[dedge>d]
+d[0, :] = 0
+d0 = d
 # we will add a seed just in case we want to redo this exact phase later...
 seed = 20171117
 xtopo, ytopo, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(
@@ -219,23 +223,25 @@ xtopo, ytopo, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(
 _log.info('shape(hlow): %s', np.shape(hlow))
 _log.info('maxx %f dx[0] %f maxx/dx %f nx %d', maxx, dx[0], maxx/dx[0], nx)
 _log.info('maxxy %f dy[0] %f maxy/dy %f ny %d', maxy, dy[0], maxy/dy[0], ny)
-
+hlow = hlow[:ny, :nx]
 h = np.real(h - np.min(h))
 #
 # put in an envelope:
 
-xenvelope = np.zeros(nx) + 0.07
-xenvelope[400:(nx-400)] = 1.
-ind = range(340,400)
-xenvelope[ind] = np.linspace(0.07, 1, len(ind))
-xenvelope[int(nx/2):] = xenvelope[:int(nx/2)][::-1]
+sig = 300e3
+xenvelope = np.zeros(nx) + 0.07 + 0.93* np.exp(-((x-x.mean())/sig)**2)
+xenvelope[np.abs(x-x.mean())<200e3] = 1.
 
 # hband = np.real(hband - np.mean(hband)+np.mean(h))
-hlow = np.real(hlow - np.mean(hlow) + np.mean(h))
+hlow = np.real(hlow - np.mean(hlow))
 h = h * xenvelope[np.newaxis, :]
-hlow = hlow * xenvelope[np.newaxis, :]
+hlow = hlow * (xenvelope)[np.newaxis, :]
 
-d= hlow - H
+#d= hlow + d
+d[0, :] = 0
+d[d>0] = 0
+d[d<-H] = -H
+
 
 with open(indir+"/topog.bin", "wb") as f:
   d.tofile(f)
@@ -244,9 +250,12 @@ f.close()
 _log.info(shape(d))
 
 fig, ax = plt.subplots(2,1)
-_log.info('%s %s', shape(x),shape(d))
-ax[0].plot(x/1.e3,d[0,:].T)
-ax[0].plot(x/1.e3,xenvelope*1000-4000)
+_log.info('%s %s %s %s %s', nx, ny, shape(x),shape(y),shape(d))
+mid = int(ny/2)
+ax[0].plot(x/1.e3,d[mid,:].T)
+ax[0].plot(x/1.e3,d0[mid,:].T)
+ax[0].plot(x/1.e3,hlow[mid,:].T)
+ax[0].plot(x/1.e3,xenvelope*1000-H)
 
 pcm=ax[1].pcolormesh(x/1.e3,y/1.e3,d,rasterized=True)
 fig.colorbar(pcm,ax=ax[1])
@@ -263,8 +272,44 @@ with open(indir+"/delZ.bin", "wb") as f:
 f.close()
 z=np.cumsum(dz)
 
+#######################
+# surface temperature relaxation
+aa = np.zeros((ny, nx))
+aa = aa + np.linspace(4, 12, ny)[:, np.newaxis]
+with open(indir+"/thetaClimFile.bin", "wb") as f:
+	aa.tofile(f)
+
+fig, ax = plt.subplots()
+ax.plot(aa[:,0], y / 1e3)
+ax.set_title('Surface temperature relaxation')
+ax.set_xlabel('T [degC]')
+ax.set_ylabel('y [km]')
+fig.savefig(outdir + '/figs/Tsurf.png')
+
+#######################
+# surface zonalWindFile
+aa = np.zeros((ny, nx))
+tau0 = 0.2 # N/m^2
+tauoffset = 0.0
+windwidth = 1000e3
+tau = tau0 * np.cos((y-y.mean())/ windwidth * np.pi )**2 + tauoffset
+aa = aa + tau[:, np.newaxis]
+with open(indir+"/zonalWindFile.bin", "wb") as f:
+	aa.tofile(f)
+
+fig, ax = plt.subplots()
+ax.plot(aa[:,0], y / 1e3)
+ax.set_title('Surface temperature relaxation')
+ax.set_xlabel(r'$\tau [N\.m^{-2}]$')
+ax.set_ylabel('y [km]')
+fig.savefig(outdir + '/figs/windSurf.png')
+
+
 ####################
 # temperature profile...
+# surface temperature is going to be from 4 to 12 degrees. Lets make the
+# reference temperature 5 degrees.
+
 #
 # temperature goes on the zc grid:
 g=9.8
@@ -281,11 +326,12 @@ plt.savefig(outdir+'/figs/TO.pdf')
 
 ###########################
 # velcoity data
-aa = np.zeros((nz,ny,nx))
-for i in range(nx):
-    aa[:,:,i]=U0
-with open(indir+"/Uinit.bin", "wb") as f:
-    aa.tofile(f)
+if 0:
+    aa = np.zeros((nz,ny,nx))
+    for i in range(nx):
+        aa[:,:,i]=U0
+    with open(indir+"/Uinit.bin", "wb") as f:
+        aa.tofile(f)
 
 
 ########################
@@ -293,24 +339,25 @@ with open(indir+"/Uinit.bin", "wb") as f:
 # In data.rbcs, we have set tauRelaxT=17h = 61200 s
 # here we wil set the first and last 50 km in *y* to relax at this scale and
 # let the rest be free.
+if 0:
 
-iny = np.where((y<50e3) | (y>maxy-50e3))[0]
+    iny = np.where((y<50e3) | (y>maxy-50e3))[0]
 
-aa = np.zeros((nz,ny,nx))
-for i in iny:
-    aa[:,:,i]=1.
+    aa = np.zeros((nz,ny,nx))
+    for i in iny:
+        aa[:,:,i]=1.
 
-with open(indir+"/spongeweight.bin", "wb") as f:
-    aa.tofile(f)
-f.close()
+    with open(indir+"/spongeweight.bin", "wb") as f:
+        aa.tofile(f)
+    f.close()
 
-aa=np.zeros((nz,ny,nx))
-aa+=T0[:,newaxis,newaxis]
-_log.info(shape(aa))
+    aa=np.zeros((nz,ny,nx))
+    aa+=T0[:,newaxis,newaxis]
+    _log.info(shape(aa))
 
-with open(indir+"/Tforce.bin", "wb") as f:
-    aa.tofile(f)
-f.close()
+    with open(indir+"/Tforce.bin", "wb") as f:
+        aa.tofile(f)
+    f.close()
 
 
 

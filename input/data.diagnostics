@@ -2,7 +2,7 @@
 
 &diagnostics_list
 # 3D variables.
- frequency(1)  = -36000,
+ frequency(1)  = -450000,
  timePhase(1)  = 0,
  fields(1:5,1) = 'UVEL    ',
                  'VVEL    ',
@@ -12,15 +12,14 @@
  filename(1)   = 'spinup'
 #
  filename(2)   = 'spinup2d'
- frequency(2)  = -36000,
+ frequency(2)  = -450000,
  timePhase(2)  = 0,
  fields(1:2,2) = 'ETAN    ',
                  'PHIBOT  ',
 #
-# 3D variables.  Just output every 30 minutes last hour.  Should be three
-# fields.
+# 3D variables.
  frequency(3)  = -1800,
- timePhase(3)  = 900000,
+ timePhase(3)  = 9000000,
  fields(1:5,3) = 'UVEL    ',
                  'VVEL    ',
                  'WVEL    ',
@@ -30,7 +29,7 @@
 #
  filename(4)   = 'final2d'
  frequency(4)  = -1800,
- timePhase(4)  = 900000,
+ timePhase(4)  = 9000000,
  fields(1:2,4) = 'ETAN    ',
                  'PHIBOT  ',
 #

@@ -5,34 +5,40 @@
 # Continuous equation parameters
  &PARM01
  debuglevel=3,
- tRefFile='../indata/TRef.bin',
- sRef= 400*35.,
+ tRefFile=340*5,
+ sRef= 340*35.,
+#
  viscAz=1.E-5,
  viscAh=1.E-5,
- no_slip_sides=.FALSE.,
- no_slip_bottom=.FALSE.,
  diffKhT=1.E-5,
  diffKzT=1.E-5,
  implicitDiffusion=.TRUE.,
  implicitViscosity=.TRUE.,
+#
  f0=1.E-4,
- beta=0.E-11,
+ beta=1.87E-11,
+#
  eosType='LINEAR',
  tAlpha=2.E-4,
  sBeta =0.E-4,
  gravity=9.81,
+#
  implicitFreeSurface=.FALSE.,
  exactConserv=.FALSE.
  rigidLid=.TRUE.
+#
  nonHydrostatic=.FALSE.,
+#
  hFacMin=1.,
- tempAdvScheme=77,
-# implicSurfPress=0.5,
-# implicDiv2DFlow=0.5,
-# nonlinFreeSurf=3,
-# hFacInf=0.2,
-# hFacSup=1.8,
+#
+ tempAdvScheme=7,
  saltStepping=.FALSE.,
+#
+# boundary conditions
+ bottomDragQuadratic=0.0021,
+ no_slip_sides=.FALSE.,
+ no_slip_bottom=.FALSE.,
+#
  staggerTimeStep=.TRUE.,
 #- not safe to use globalFiles in multi-processors runs
 #globalFiles=.TRUE.,
@@ -45,26 +51,26 @@
 # Elliptic solver parameters
  &PARM02
  cg2dMaxIters=400,
- cg2dTargetResidual=1.E-13,
- cg3dMaxIters=100,
- cg3dTargetResidual=1.E-13,
+ cg2dTargetResidual=1.E-9,
  /
 
 # Time stepping parameters
  &PARM03
- nIter0=0,
+ startTime=0,
 # nTimeSteps=480,
  endTime=903700,
 # endTime=10800,
- deltaT=50.,
+ deltaT=3600.,
  abEps=0.1,
- pChkptFreq=144000.0,
+ pChkptFreq=1000000.0,
  chkptFreq=0.,
  dumpFreq=0,
  dumpInitAndLast=.FALSE.
  monitorFreq=3600.,
  monitorSelect=2,
- rwSuffixType=2
+ rwSuffixType=2,
+ # 72 days: From Ryan's setup.
+ tauThetaClimRelax=259200.0,
 /
 
 # Gridding parameters
@@ -78,9 +84,11 @@
 # Input datasets
  &PARM05
 # hydrogThetaFile='../indata/T.init',
-uVelInitFile='../indata/Uinit.bin',
+# uVelInitFile='../indata/Uinit.bin',
 # vVelInitFile='../indata/V.init',
 # pSurfInitFile='../indata/Eta.init',
  bathyFile='../indata/topog.bin',
  mdsioLocalDir='./junk/',
+ zonalWindFile='../indata/zonalWindFile.bin',
+ thetaClimFile='../indata/thetaClimFile.bin',
  /
