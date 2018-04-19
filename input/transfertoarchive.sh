@@ -8,7 +8,7 @@
 #PBS -j oe
 
 # run as qsub -N LW1kmlowU10Amp305K18 transfertoarchive
-TOP=AbHillParam
+TOP=ForcedChannel
 #TODO=Shelf1km01
 
 TODO=${PBS_JOBNAME}

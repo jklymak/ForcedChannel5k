@@ -8,5 +8,5 @@ f0=$4
 
 MainRun=$(qsub -N ${todo} runModel.sh)
 
-qsub -W depend=afterany:$MainRun -N ${todo} transfertoarchive.sh
-qsub -W depend=afterany:$MainRun -v PRE="${todo}",U0="${U0}",N0="${N0}",f0="${f0}"  runGetEnergy.sh
+# qsub -W depend=afterany:$MainRun -N ${todo} transfertoarchive.sh
+# qsub -W depend=afterany:$MainRun -v  PRE="${todo}",U0="${U0}",N0="${N0}",f0="${f0}"  runGetEnergy.sh

@@ -5,17 +5,22 @@
 # Continuous equation parameters
  &PARM01
  debuglevel=3,
- tRefFile=340*5,
- sRef= 340*35.,
+ tRef=86*5.,
+ sRef=86*35.,
 #
- viscAz=1.E-5,
+# viscAz=1.E-5,
  viscAh=1.E-5,
+ viscAz=5.6614E-04,
+ viscC4Leith=2.15,
+ viscC4Leithd=2.15,
+ viscA4GridMax=0.8,
+ useAreaViscLength=.TRUE.,
  diffKhT=1.E-5,
  diffKzT=1.E-5,
  implicitDiffusion=.TRUE.,
  implicitViscosity=.TRUE.,
-#
- f0=1.E-4,
+#   Southern hemisphere just so I can confuse myself...
+ f0=-1.E-4,
  beta=1.87E-11,
 #
  eosType='LINEAR',
@@ -40,8 +45,7 @@
  no_slip_bottom=.FALSE.,
 #
  staggerTimeStep=.TRUE.,
-#- not safe to use globalFiles in multi-processors runs
-#globalFiles=.TRUE.,
+#
  useSingleCpuIO = .TRUE.,
  readBinaryPrec=64,
  writeBinaryPrec=64,
@@ -58,18 +62,21 @@
  &PARM03
  startTime=0,
 # nTimeSteps=480,
- endTime=903700,
+# 10 years: About 35 hours...
+ endTime=315360000,
 # endTime=10800,
- deltaT=3600.,
+ deltaT=1800.,
  abEps=0.1,
- pChkptFreq=1000000.0,
+# 0.5 years
+ pChkptFreq=15768000.0,
  chkptFreq=0.,
  dumpFreq=0,
- dumpInitAndLast=.FALSE.
- monitorFreq=3600.,
+ dumpInitAndLast=.FALSE.,
+# 10 times once a month   Should take 4 minutes for each monitor step.
+ monitorFreq=262800.,
  monitorSelect=2,
  rwSuffixType=2,
- # 72 days: From Ryan's setup.
+# 72 hours: From Ryan's setup.
  tauThetaClimRelax=259200.0,
 /
 
@@ -83,7 +90,7 @@
 
 # Input datasets
  &PARM05
-# hydrogThetaFile='../indata/T.init',
+ hydrogThetaFile='../indata/Tinit.bin',
 # uVelInitFile='../indata/Uinit.bin',
 # vVelInitFile='../indata/V.init',
 # pSurfInitFile='../indata/Eta.init',

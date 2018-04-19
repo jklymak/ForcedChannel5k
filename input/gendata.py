@@ -28,7 +28,7 @@ setupname=''
 u0 = 10
 N0 = 1e-3
 f0 = 1.0e-4
-runname='ChannelCoarse01'
+runname='ChannelCoarse02'
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
@@ -38,7 +38,7 @@ outdir0='../results/'+runname+'/'
 indir =outdir0+'/indata/'
 
 ## Params for below as per Nikurashin and Ferrari 2010b
-H = 3400.
+H = 3440.
 H0 = 3000
 U0 = u0/100.
 
@@ -63,7 +63,7 @@ elif runtype=='low':
 
 nx = 4*40
 ny = 2*26
-nz = 340
+nz = 86
 
 _log.info('nx %d ny %d', nx, ny)
 
@@ -123,8 +123,8 @@ mkdir(outdir+'/../build/')
 shutil.copytree('../indata/', outdir+'/../indata/')
 
 try:
-    shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv')
-    shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
+    shutil.copy('../build/mitgcmuv', outdir+'/../build/mitgcmuv')
+    #shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
     shutil.copy('../build/Makefile', outdir+'/../build/Makefile')
     shutil.copy('data', outdir+'/data')
     shutil.copy('eedata', outdir)
@@ -210,9 +210,12 @@ dedge = np.zeros((ny, nx)) - H0
 ind = np.where(y<50e3)[0]
 dedge[ind,:] = -((y[ind])*(H0)/50e3)[:, np.newaxis]
 dedge[-ind,:] = -(((y[-1]-y[-ind]))*(H0)/50e3)[:, np.newaxis]
+
 d[dedge>d] = dedge[dedge>d]
 d[0, :] = 0
 d0 = d
+
+
 # we will add a seed just in case we want to redo this exact phase later...
 seed = 20171117
 xtopo, ytopo, h, hband, hlow, k, l, P0, Pband, Plow = getTopo2D(
@@ -324,6 +327,7 @@ plt.clf()
 plt.plot(T0,z)
 plt.savefig(outdir+'/figs/TO.pdf')
 
+
 ###########################
 # velcoity data
 if 0:
@@ -331,6 +335,13 @@ if 0:
     for i in range(nx):
         aa[:,:,i]=U0
     with open(indir+"/Uinit.bin", "wb") as f:
+        aa.tofile(f)
+
+###########################
+# temperature data
+if 1:
+    aa = np.zeros((nz,ny,nx)) + 4.
+    with open(indir+"/Tinit.bin", "wb") as f:
         aa.tofile(f)
 
 
