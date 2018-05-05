@@ -28,7 +28,7 @@ setupname=''
 u0 = 10
 N0 = 1e-3
 f0 = 1.0e-4
-runname='ChannelCoarse02'
+runname='ChannelToy02'
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
@@ -61,9 +61,11 @@ elif runtype=='low':
 # 1500 km x 500 km
 # 10 km horizontal scale:
 
-nx = 4*40
-ny = 2*26
-nz = 86
+nx = 80
+ny = 26
+nz = 42
+dx0 = 20e3
+dy0 = 20e3
 
 _log.info('nx %d ny %d', nx, ny)
 
@@ -161,7 +163,7 @@ _log.info("Done copying files")
 
 ##### Dx ######
 
-dx = zeros(nx)+10e3
+dx = zeros(nx)+dx0
 print(len(dx))
 
 # dx = zeros(nx)+100.
@@ -172,7 +174,7 @@ _log.info('XCoffset=%1.4f'%x[0])
 
 ##### Dy ######
 
-dy = zeros(ny)+10e3
+dy = zeros(ny)+dy0
 
 # dx = zeros(nx)+100.
 y=np.cumsum(dy)
@@ -313,23 +315,8 @@ fig.savefig(outdir + '/figs/windSurf.png')
 # surface temperature is going to be from 4 to 12 degrees. Lets make the
 # reference temperature 5 degrees.
 
-#
-# temperature goes on the zc grid:
-g=9.8
-alpha = 2e-4
-T0 = 28+cumsum(N0**2/g/alpha*(-dz))
-
-with open(indir+"/TRef.bin", "wb") as f:
-	T0.tofile(f)
-f.close()
-#plot
-plt.clf()
-plt.plot(T0,z)
-plt.savefig(outdir+'/figs/TO.pdf')
-
-
 ###########################
-# velcoity data
+# velocity data
 if 0:
     aa = np.zeros((nz,ny,nx))
     for i in range(nx):

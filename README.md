@@ -1,5 +1,11 @@
 # Some Runs
 
+## Runs:
+
+  - ChannelToy01: 20x20 km, wind forced, temp restore.  visc=5e-4, diffz=1e-5
+  - ChannelToy02: diffz=5e-4; should be much more mixing downwards
+
+
 ## Contents:
 
   - `MITgcm66h` is my version with `NF90io`.

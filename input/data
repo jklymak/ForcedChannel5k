@@ -5,18 +5,18 @@
 # Continuous equation parameters
  &PARM01
  debuglevel=3,
- tRef=86*5.,
- sRef=86*35.,
+ tRef=42*5.,
+ sRef=42*35.,
 #
 # viscAz=1.E-5,
- viscAh=1.E-5,
+ viscAh=5.6614E-04,
  viscAz=5.6614E-04,
  viscC4Leith=2.15,
  viscC4Leithd=2.15,
  viscA4GridMax=0.8,
  useAreaViscLength=.TRUE.,
- diffKhT=1.E-5,
- diffKzT=1.E-5,
+ diffKhT=5.6614E-04,
+ diffKzT=5.6614E-04,
  implicitDiffusion=.TRUE.,
  implicitViscosity=.TRUE.,
 #   Southern hemisphere just so I can confuse myself...
@@ -65,7 +65,7 @@
 # 10 years: About 35 hours...
  endTime=315360000,
 # endTime=10800,
- deltaT=1800.,
+ deltaT=3600.,
  abEps=0.1,
 # 0.5 years
  pChkptFreq=15768000.0,

@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# $Header: /u/gcmpack/MITgcm/tools/build_options/darwin_ppc_f95,v 1.2 2010/03/21 22:22:52 jmc Exp $
+# $Name: checkpoint65f $
+
+# tested on dual G4-mirror door, 1.25GHz
+# uname -mrsvp:
+#Darwin 7.9.0 Darwin Kernel Version 7.9.0: Wed Mar 30 20:11:17 PST 2005;
+#root:xnu/xnu-517.12.7.obj~1/RELEASE_PPC  Power Macintosh powerpc
+# cc-compiler is available only with the Apple Developer Tools,
+# so make sure that those are installed
+#
+CPP='/usr/local/bin/cpp-8 -traditional -P'
+FC=mpif90
+CC=mpicc
+LINK=$FC
+NOOPTFLAGS='-O0'
+MAKEDEPEND='makedepend'
+DEFINES='-DWORDLENGTH=4 -DALWAYS_USE_MPI -DALLOW_USE_MPI'
+INCLUDES='-I/usr/local/include'
+LIBS='-L/usr/local/lib'
+
+#  For IEEE, use the "-ffloat-store" option
+if test "x$IEEE" = x ; then
+#    FFLAGS='-Wimplicit -Wunused -Wuninitialized'
+    FFLAGS='-Wunused -Wuninitialized '
+    FOPTIM='-O3 -funroll-loops -ftree-vectorize -ffpe-trap=invalid'
+else
+#    FFLAGS='-Wimplicit -Wunused -ffloat-store'
+    FFLAGS='-Wunused -ffloat-store -std=legacy -fsecond-underscore'
+    FOPTIM='-O0'
+fi

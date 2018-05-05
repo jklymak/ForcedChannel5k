@@ -1,0 +1,9 @@
+# KPP parameters
+ &KPP_PARM01
+ KPPmixingMaps   = .FALSE.,
+ KPP_ghatUseTotalDiffus=.TRUE.,
+# purposely set these low so that KL10 handles them.
+ difmcon = 1.E-5
+ difscon = 1.E-5
+ diftcon = 1.E-5
+ /
