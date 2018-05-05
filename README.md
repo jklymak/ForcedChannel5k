@@ -4,6 +4,8 @@
 
   - ChannelToy01: 20x20 km, wind forced, temp restore.  visc=5e-4, diffz=1e-5
   - ChannelToy02: diffz=5e-4; should be much more mixing downwards
+  - ChannelToy03: f=-1.263e-4, diffz=5e-4;  
+    - branch: toy-version
 
 
 ## Contents:
