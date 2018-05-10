@@ -4,8 +4,16 @@
 
   - ChannelToy01: 20x20 km, wind forced, temp restore.  visc=5e-4, diffz=1e-5
   - ChannelToy02: diffz=5e-4; should be much more mixing downwards
+    - result is not much different than above!
   - ChannelToy03: f=-1.263e-4, diffz=5e-4;  
     - branch: toy-version
+    - this one is not much different either.  maybe a bit better deep strat.
+    - This should prob be my base just to f is correct...
+  - ChannelToyLowTau: weaker forcing
+  - ChannelToyHighdT: Much bigger surface density difference (24 deg!)
+  - ChannelToyHighCd: ChannelToy03 at 100 h.  Restart Cd=0.021 (from 0.0021)
+    - See how long it takes to settle down.  
+
 
 
 ## Contents:

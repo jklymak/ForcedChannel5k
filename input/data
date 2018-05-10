@@ -20,7 +20,7 @@
  implicitDiffusion=.TRUE.,
  implicitViscosity=.TRUE.,
 #   Southern hemisphere just so I can confuse myself...
- f0=-1.E-4,
+ f0=-1.263E-4,
  beta=1.87E-11,
 #
  eosType='LINEAR',
@@ -63,13 +63,13 @@
  startTime=0,
 # nTimeSteps=480,
 # 10 years: About 35 hours...
- endTime=315360000,
+ endTime=3153600000,
 # endTime=10800,
- deltaT=3600.,
+ deltaT=1800.,
  abEps=0.1,
 # 0.5 years
- pChkptFreq=15768000.0,
- chkptFreq=0.,
+ pChkptFreq=0.0,
+ chkptFreq=31536000.0,
  dumpFreq=0,
  dumpInitAndLast=.FALSE.,
 # 10 times once a month   Should take 4 minutes for each monitor step.

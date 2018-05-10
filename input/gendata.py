@@ -27,8 +27,8 @@ runtype = 'low'  # 'full','filt','low'
 setupname=''
 u0 = 10
 N0 = 1e-3
-f0 = 1.0e-4
-runname='ChannelToy02'
+f0 = 1.263e-4
+runname='ChannelToyLowTau'
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
@@ -294,9 +294,9 @@ fig.savefig(outdir + '/figs/Tsurf.png')
 #######################
 # surface zonalWindFile
 aa = np.zeros((ny, nx))
-tau0 = 0.2 # N/m^2
+tau0 = 0.1 # N/m^2
 tauoffset = 0.0
-windwidth = 1000e3
+windwidth = 500e3
 tau = tau0 * np.cos((y-y.mean())/ windwidth * np.pi )**2 + tauoffset
 aa = aa + tau[:, np.newaxis]
 with open(indir+"/zonalWindFile.bin", "wb") as f:
@@ -392,5 +392,3 @@ except:
 shutil.copytree(outdir0+'/input/', '../archive/'+runname+'/input')
 shutil.copytree(outdir0+'/python/', '../archive/'+runname+'/python')
 shutil.copytree(outdir0+'/code', '../archive/'+runname+'/code')
-
-exit()
