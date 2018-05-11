@@ -13,6 +13,7 @@ import scipy.signal as scisig
 from maketopo import getTopo2D
 import logging
 from replace_data import replace_data
+import xarray as xr
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -28,7 +29,7 @@ setupname=''
 u0 = 10
 N0 = 1e-3
 f0 = 1.263e-4
-runname='ChannelToyLowTau'
+runname='Channel5k01'
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
@@ -61,11 +62,11 @@ elif runtype=='low':
 # 1500 km x 500 km
 # 10 km horizontal scale:
 
-nx = 80
-ny = 26
-nz = 42
-dx0 = 20e3
-dy0 = 20e3
+nx = 40*8
+ny = 24*4
+nz = 84
+dx0 = 1600/nx
+dy0 = 500/ny
 
 _log.info('nx %d ny %d', nx, ny)
 
@@ -309,28 +310,93 @@ ax.set_xlabel(r'$\tau [N\.m^{-2}]$')
 ax.set_ylabel('y [km]')
 fig.savefig(outdir + '/figs/windSurf.png')
 
+fname = 'ChannelToy03Last.nc'
+fname2d = 'ChannelToy03Last2d.nc'
+_log.info('Reading initial conditions from from {} and {}', fname, fname2d)
 
 ####################
 # temperature profile...
 # surface temperature is going to be from 4 to 12 degrees. Lets make the
 # reference temperature 5 degrees.
+_log.info('Doing surface height interpolation')
+# get data
 
-###########################
-# velocity data
-if 0:
-    aa = np.zeros((nz,ny,nx))
+with xr.open_dataset(fname2d) as ds:
+    _log.info('Time', ds.time)
+    ny0 = ds.sizes['j']
+    nx0 = ds.sizes['i']
+    _log.info('nx0, ny0', nx0, ny0)
+    # interpolate first onto new x...
+    tmp = np.zeros((ny0, nx))
+    print(np.shape(ds.ETAN.data))
+    for j in range(ny0):
+        good = np.isfinite(ds.ETAN.data[j, :])
+        xx = ds.XC.data[0, good]
+        tmp[j, :] = np.interp(x, xx, ds.ETAN.data[j, good] )
+
+    aa = np.zeros((ny,nx))
+    # now interpolate in y....
     for i in range(nx):
-        aa[:,:,i]=U0
-    with open(indir+"/Uinit.bin", "wb") as f:
+        good = np.isfinite(tmp[:, i])
+        aa[:, i] = np.interp(y, ds.YC.data[good, 0], tmp[good, i])
+    with open(indir+"/Etainit.bin", "wb") as f:
         aa.tofile(f)
 
-###########################
-# temperature data
-if 1:
-    aa = np.zeros((nz,ny,nx)) + 4.
-    with open(indir+"/Tinit.bin", "wb") as f:
-        aa.tofile(f)
+    fig, ax = plt.subplots(2, 1)
+    ax[0].pcolormesh(ds.XC, ds.YC, ds.ETAN, rasterized=True)
+    ax[1].pcolormesh(x, y, aa, rasterized=True)
+    fig.savefig(outdir+'/figs/Eta0.png')
 
+# do the velocities....
+# these are written row-major so I think we can do this by level...
+with xr.open_dataset(fname) as dss:
+    ny0 = ds.sizes['j']
+    nx0 = ds.sizes['i']
+    nz0 = ds.sizes['k']
+    print(dss.YC)
+    dsnew = xr.Dataset( {'UVEL': (['z','y','x'], np.zeros((nz, ny0, nx0))),
+                        'VVEL': (['z','y','x'], np.zeros((nz, ny0, nx0))),
+                        'THETA': (['z','y','x'], np.zeros((nz, ny0, nx0)))},
+                        coords={'z':z, 'y':dss.YC.data[:,0], 'x':dss.XC.data[0, :]})
+
+    for todo in ['UVEL', 'VVEL', 'THETA']:
+        for j in range(ny0):
+            print(j)
+            for i in range(nx0):
+                good = np.where((dss['THETA'].data[:, j, i]>0))[0]
+                if len(good) > 0:
+                    dsnew[todo][:, j, i] = np.interp(z,
+                            dss['Z'].data[good],
+                            dss[todo].data[good, j, i])
+    dsnew.to_netcdf('Zinterp.nc')
+
+with xr.open_dataset('Zinterp.nc') as dss:
+    ny0 = dss.sizes['y']
+    nx0 = dss.sizes['x']
+    nz0 = dss.sizes['z']
+    for k in range(nz0):
+        ds = dss.isel(z=k)
+        if k==0:
+            mode='wb'
+        else:
+            mode='ab'
+
+        for todo, outname in zip(['UVEL', 'VVEL', 'THETA'],
+                ['Uinit.bin', 'Vinit.bin', 'Tinit.bin']):
+            tmp = np.zeros((ny0, nx))
+            for j in range(ny0):
+                good = np.isfinite(ds[todo].data[j, :])
+                xx = ds.x.data[good]
+                tmp[j, :] = np.interp(x, xx, ds[todo].data[j, good] )
+
+            aa = np.zeros((ny,nx))
+            # now interpolate in y....
+            for i in range(nx):
+                good = np.isfinite(tmp[:, i])
+                aa[:, i] = np.interp(y, ds.y.data[good], tmp[good, i])
+
+            with open(indir+outname, mode) as f:
+                aa.tofile(f)
 
 ########################
 # RBCS sponge and forcing
