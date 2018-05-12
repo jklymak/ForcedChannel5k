@@ -2,6 +2,8 @@
 # | Model parameters |
 # ====================
 #
+#  Pickup at 30 days from ckptA.  dt = 800 vs 100...
+#
 # Continuous equation parameters
  &PARM01
  debuglevel=3,
@@ -60,12 +62,14 @@
 
 # Time stepping parameters
  &PARM03
- startTime=0,
+ startTime=2592000,
+ pickupSuff='ckptA',
+ pickupStrictlyMatch=.FALSE.,
 # nTimeSteps=480,
-# 10 years: About 35 hours...
+# 10 years (about 17 h at dt = 800 s)
  endTime=315360000,
 # endTime=10800,
- deltaT=100.,
+ deltaT=800.,
  abEps=0.1,
 # 0.5 years
  pChkptFreq=0.0,

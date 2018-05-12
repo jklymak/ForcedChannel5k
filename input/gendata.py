@@ -65,8 +65,8 @@ elif runtype=='low':
 nx = 40*8
 ny = 24*4
 nz = 84
-dx0 = 1600/nx
-dy0 = 500/ny
+dx0 = 1600e3/nx
+dy0 = 500e3/ny
 
 _log.info('nx %d ny %d', nx, ny)
 
@@ -130,6 +130,8 @@ try:
     #shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
     shutil.copy('../build/Makefile', outdir+'/../build/Makefile')
     shutil.copy('data', outdir+'/data')
+    shutil.copy('dataSpinup01', outdir + '/dataSpinup01')
+    shutil.copy('dataSpinup02', outdir + '/dataSpinup02')
     shutil.copy('eedata', outdir)
     shutil.copy('data.kl10', outdir)
     try:
@@ -295,7 +297,7 @@ fig.savefig(outdir + '/figs/Tsurf.png')
 #######################
 # surface zonalWindFile
 aa = np.zeros((ny, nx))
-tau0 = 0.1 # N/m^2
+tau0 = 0.2 # N/m^2
 tauoffset = 0.0
 windwidth = 500e3
 tau = tau0 * np.cos((y-y.mean())/ windwidth * np.pi )**2 + tauoffset
@@ -313,6 +315,8 @@ fig.savefig(outdir + '/figs/windSurf.png')
 fname = 'ChannelToy03Last.nc'
 fname2d = 'ChannelToy03Last2d.nc'
 _log.info('Reading initial conditions from from {} and {}', fname, fname2d)
+
+
 
 ####################
 # temperature profile...
@@ -353,7 +357,9 @@ with xr.open_dataset(fname) as dss:
     ny0 = ds.sizes['j']
     nx0 = ds.sizes['i']
     nz0 = ds.sizes['k']
-    print(dss.YC)
+    # get T0
+    T0 = dss['THETA'].isel(j=slice(5,-5)).mean(dim=('i', 'j'))
+    print(T0)
     dsnew = xr.Dataset( {'UVEL': (['z','y','x'], np.zeros((nz, ny0, nx0))),
                         'VVEL': (['z','y','x'], np.zeros((nz, ny0, nx0))),
                         'THETA': (['z','y','x'], np.zeros((nz, ny0, nx0)))},
@@ -368,6 +374,15 @@ with xr.open_dataset(fname) as dss:
                     dsnew[todo][:, j, i] = np.interp(z,
                             dss['Z'].data[good],
                             dss[todo].data[good, j, i])
+                elif todo == 'THETA':
+                    good = np.where(T0>0)[0]
+                    dsnew[todo][:, j, i] = np.interp(z,
+                            dss['Z'].data[good],
+                            T0[good])
+                if todo == 'THETA':
+                    print(np.all(dsnew[todo][:, j, i] > 0))
+
+                    assert np.all(dsnew[todo][:, j, i] > 0)
     dsnew.to_netcdf('Zinterp.nc')
 
 with xr.open_dataset('Zinterp.nc') as dss:

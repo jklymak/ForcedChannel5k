@@ -2,6 +2,7 @@
 # | Model parameters |
 # ====================
 #
+#  For an initial spinup of 30 days w/ a pickup at end...
 # Continuous equation parameters
  &PARM01
  debuglevel=3,
@@ -62,14 +63,14 @@
  &PARM03
  startTime=0,
 # nTimeSteps=480,
-# 10 years: About 35 hours...
- endTime=315360000,
+# 30 days (about 1.1 h at dt = 100 s)
+ endTime=2592200,
 # endTime=10800,
  deltaT=100.,
  abEps=0.1,
 # 0.5 years
  pChkptFreq=0.0,
- chkptFreq=31536000.0,
+ chkptFreq=2592000.0,
  dumpFreq=0,
  dumpInitAndLast=.FALSE.,
 # 10 times once a month   Should take 4 minutes for each monitor step.

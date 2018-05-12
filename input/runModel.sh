@@ -1,9 +1,9 @@
 #!/bin/sh -l
 #PBS -m be
 #PBS -M jklymak@gmail.com
-#PBS -l select=1:ncpus=8:mpiprocs=8
-#PBS -l walltime=48:10:00
-#PBS -q standard
+#PBS -l select=1:ncpus=32:mpiprocs=32
+#PBS -l walltime=00:20:00
+#PBS -q debug
 #PBS -A ONRDC35552400
 #PBS -j oe
 #PBS -N ${JOBNAME}
@@ -14,7 +14,7 @@
 cd $PBS_O_WORKDIR
 # top=$1  Passed as qsub  -v top=h60h27f20 runModel.sh
 
-PARENT=ForcedChannel
+PARENT=ForcedChannel5k
 
 top=${PBS_JOBNAME}
 results=${WORKDIR}/${PARENT}/
@@ -36,4 +36,4 @@ pwd
 
 ls -al ../build/mitgcmuv
 printf "Starting: $outdir\n"
-aprun -n 8 ../build/mitgcmuv > mit.out
+aprun -n 32 ../build/mitgcmuv > mit.out
