@@ -363,27 +363,35 @@ with xr.open_dataset(fname) as dss:
     dsnew = xr.Dataset( {'UVEL': (['z','y','x'], np.zeros((nz, ny0, nx0))),
                         'VVEL': (['z','y','x'], np.zeros((nz, ny0, nx0))),
                         'THETA': (['z','y','x'], np.zeros((nz, ny0, nx0)))},
-                        coords={'z':z, 'y':dss.YC.data[:,0], 'x':dss.XC.data[0, :]})
+                        coords={'z':-z, 'y':dss.YC.data[:,0], 'x':dss.XC.data[0, :]})
 
     for todo in ['UVEL', 'VVEL', 'THETA']:
+        aa = np.zeros((nz, ny0, nx0))
         for j in range(ny0):
             print(j)
             for i in range(nx0):
                 good = np.where((dss['THETA'].data[:, j, i]>0))[0]
                 if len(good) > 0:
-                    dsnew[todo][:, j, i] = np.interp(z,
-                            dss['Z'].data[good],
+                    #print(dss[todo].data[good, j, i])
+                    a = np.interp(z-z[0]/2,
+                            -dss['Z'].data[good],
                             dss[todo].data[good, j, i])
+                    dsnew[todo][:, j, i] = a
+
+                    if j==20 and i==20:
+                        print(dss['Z'].data[good])
+                        print(-z)
+                        print(a)
+                        print(dsnew[todo][:, j, i])
                 elif todo == 'THETA':
                     good = np.where(T0>0)[0]
-                    dsnew[todo][:, j, i] = np.interp(z,
-                            dss['Z'].data[good],
+                    dsnew[todo][:, j, i] = np.interp(z-z[0]/2,
+                            -dss['Z'].data[good],
                             T0[good])
                 if todo == 'THETA':
-                    print(np.all(dsnew[todo][:, j, i] > 0))
-
                     assert np.all(dsnew[todo][:, j, i] > 0)
-    dsnew.to_netcdf('Zinterp.nc')
+    print(dsnew['UVEL'][:, 20, 20])
+    dsnew.to_netcdf('Zinterp.nc', 'w')
 
 with xr.open_dataset('Zinterp.nc') as dss:
     ny0 = dss.sizes['y']
