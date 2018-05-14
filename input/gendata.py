@@ -63,10 +63,10 @@ elif runtype=='low':
 # 10 km horizontal scale:
 
 nx = 40*8
-ny = 24*4
+ny = 26*8
 nz = 84
 dx0 = 1600e3/nx
-dy0 = 500e3/ny
+dy0 = 1040e3/ny
 
 _log.info('nx %d ny %d', nx, ny)
 
@@ -312,8 +312,8 @@ ax.set_xlabel(r'$\tau [N\.m^{-2}]$')
 ax.set_ylabel('y [km]')
 fig.savefig(outdir + '/figs/windSurf.png')
 
-fname = 'ChannelToy03Last.nc'
-fname2d = 'ChannelToy03Last2d.nc'
+fname = 'Channel1000Spinup.nc.nc'
+fname2d = 'Channel1000Spinup2d.nc'
 _log.info('Reading initial conditions from from {} and {}', fname, fname2d)
 
 
