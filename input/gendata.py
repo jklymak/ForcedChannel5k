@@ -29,7 +29,7 @@ setupname=''
 u0 = 10
 N0 = 1e-3
 f0 = 1.263e-4
-runname='Channel5k01'
+runname='Channel5k1000_01'
 comments = 'Boo'
 
 # to change U we need to edit external_forcing recompile
@@ -312,7 +312,7 @@ ax.set_xlabel(r'$\tau [N\.m^{-2}]$')
 ax.set_ylabel('y [km]')
 fig.savefig(outdir + '/figs/windSurf.png')
 
-fname = 'Channel1000Spinup.nc.nc'
+fname = 'Channel1000Spinup.nc'
 fname2d = 'Channel1000Spinup2d.nc'
 _log.info('Reading initial conditions from from {} and {}', fname, fname2d)
 
