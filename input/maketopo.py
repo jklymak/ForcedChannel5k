@@ -1,6 +1,7 @@
 import numpy as np
 import logging
-import xarray
+import xarray as xr
+import matplotlib.pyplot as plt
 
 _log = logging.getLogger(__name__)
 
@@ -95,9 +96,17 @@ if __name__ == "__main__":
     h = np.real(h - np.min(h)).astype(dtype='int16')
     hband = np.real(hband - np.mean(hband)+np.mean(h))
     hlow = np.real(hlow - np.mean(hlow)+np.mean(h))
-    ds = xr.Dataset({'h': (['x', 'y'], h),
-                    'hband': (['x', 'y'], hband),
-                    'hlow' : (['x', 'y'], hlow)},
+    ds = xr.Dataset({'h': (['y', 'x'], h),
+                    'hband': (['y', 'x'], hband),
+                    'hlow' : (['y', 'x'], hlow)},
                     coords={'x': (['x'], xh),
                            'y': (['y'], yh)})
     ds.to_netcdf('../indata/topo1k.nc', 'w')
+    # plot
+    fig, axs = plt.subplots(2, 1)
+    ax = axs[0]
+    pc = ax.pcolormesh(ds.x/1e3, ds.y/1e3, ds.hlow, rasterized=True)
+    fig.colorbar(pc, ax=ax)
+    ax = axs[1]
+    ax.plot(ds.x, ds.hlow[50,:])
+    fig.savefig('figs/roughtopo.png')
