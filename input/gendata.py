@@ -299,7 +299,7 @@ fig.savefig(outdir + '/figs/Tsurf.png')
 aa = np.zeros((ny, nx))
 tau0 = 0.2 # N/m^2
 tauoffset = 0.0
-windwidth = 500e3
+windwidth = 1040e3
 tau = tau0 * np.cos((y-y.mean())/ windwidth * np.pi )**2 + tauoffset
 aa = aa + tau[:, np.newaxis]
 with open(indir+"/zonalWindFile.bin", "wb") as f:
