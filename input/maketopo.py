@@ -1,5 +1,6 @@
 import numpy as np
 import logging
+import xarray
 
 _log = logging.getLogger(__name__)
 
@@ -81,10 +82,10 @@ def getTopo2D(dx, maxx, dy, maxy,
 
 
 if __name__ == "__main__":
-    dx0 = 100.
-    dy0 = 100.
-    maxx = 409600
-    maxy = 118400
+    dx0 = 1000.
+    dy0 = 1000.
+    maxx = 1600e3
+    maxy = 1040e3
 
     xh,yh,h,hband,hlow,k,l,P,Pband,Plow=getTopo2D(dx0,maxx,dy0,maxy,amp=305.,kmin=1./6000.,kmax=1./300.)
 
@@ -92,14 +93,11 @@ if __name__ == "__main__":
     # h is between kmin and kmax
     # massage some:
     h = np.real(h - np.min(h)).astype(dtype='int16')
-    hband = np.real(hband - np.mean(hband)+np.mean(h)).astype(dtype='int16')
-    hlow = np.real(hlow - np.mean(hlow)+np.mean(h)).astype(dtype='int16')
-
-
-
-    with open("../indata/h.pickle","wb") as f:
-        pickle.dump({'h':h,'xh':xh,'yh':yh},f)
-    with open("../indata/hlow.pickle","wb") as f:
-        pickle.dump({'h':hlow,'xh':xh,'yh':yh},f)
-    with open("../indata/hband.pickle","wb") as f:
-        pickle.dump({'h':hband,'xh':xh,'yh':yh},f)
+    hband = np.real(hband - np.mean(hband)+np.mean(h))
+    hlow = np.real(hlow - np.mean(hlow)+np.mean(h))
+    ds = xr.Dataset({'h': (['x', 'y'], h),
+                    'hband': (['x', 'y'], hband),
+                    'hlow' : (['x', 'y'], hlow)},
+                    coords={'x': (['x'], xh),
+                           'y': (['y'], yh)})
+    ds.to_netcdf('../indata/topo1k.nc', 'w')

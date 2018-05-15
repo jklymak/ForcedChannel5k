@@ -7,7 +7,14 @@
 
 ## To setup
 
-  - need a 20km run from Hornby.  Files like `'ChannelToy03Last.nc'` and the 2-d verions.  These are the spinup for these runs...
+  - need a 20km run from Hornby.  Files like `'ChannelToy03Last.nc'` and the
+  2-d verions.  These are the spinup for these runs;  Done in
+  `input/get20kFile.py` and stored in `input/Channel1000Spinup2d.nc`  and `input/Channel1000Spinup.nc`.  
+  - Run 5k for 10 y:
+    - eddies obviously matter.
+    - run 5k rough for 10 y from that spinup.  Rough should be made from 1km so
+    we can reuse later.  
+    - keep running smooth from that spinup.  : `gendataSpunup.py`  
 
 
 ## Contents:
