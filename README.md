@@ -14,7 +14,11 @@
     - eddies obviously matter.
     - run 5k rough for 10 y from that spinup.  Rough should be made from 1km so
     we can reuse later.  
-    - keep running smooth from that spinup.  : `gendataSpunup.py`  
+    - `Channel5k1000_rough_01`: keep running smooth from that spinup.  : `gendataSpunup.py`  starts with
+    `Channel5k1000_01` at 5y of run time, and runs for another x years.  Run
+    with `source runSpunup.sh Channel5k1000_rough_01`
+
+    - Running `Channel5k1000_rough_01` with fast save time on levels: `fastlevels.nc`
 
 
 ## Contents:

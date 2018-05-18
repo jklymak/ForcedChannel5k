@@ -5,5 +5,5 @@ for td in [ 'Channel5k1000_rough_01', 'Channel5k1000_01']:
 
     with xr.open_dataset(todo) as ds:
         print(ds)
-        ds = ds.isel(i=180, i_g=180)
-        ds.to_netcdf('../reduceddata/SliceX180{}.nc'.format(td))
+        ds = ds.isel(i=250, i_g=250)
+        ds.to_netcdf('../reduceddata/SliceX250{}.nc'.format(td))

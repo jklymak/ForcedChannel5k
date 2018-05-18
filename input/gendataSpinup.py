@@ -72,7 +72,7 @@ _log = logging.getLogger(__name__)
 
 runtype = 'rough'  # 'full','filt','low'
 runname='Channel5k1000_%s_01' % runtype
-comments='5k -re-spinup w or w/o rough topo'
+comments='5k -re-spinup w or w/o rough topo after 5 h.'
 
 # to change U we need to edit external_forcing recompile
 
@@ -153,9 +153,7 @@ try:
     shutil.copy('../build/mitgcmuv', outdir+'/../build/mitgcmuv')
     #shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
     shutil.copy('../build/Makefile', outdir+'/../build/Makefile')
-    shutil.copy('data', outdir+'/data')
-    shutil.copy('dataSpinup01', outdir + '/dataSpinup01')
-    shutil.copy('dataSpinup02', outdir + '/dataSpinup02')
+    shutil.copy('dataSpunup', outdir + '/dataSpunup')
     shutil.copy('eedata', outdir)
     shutil.copy('data.kl10', outdir)
     try:
@@ -327,7 +325,7 @@ fig.savefig(outdir + '/figs/Tsurf.png')
 aa = np.zeros((ny, nx))
 tau0 = 0.2 # N/m^2
 tauoffset = 0.0
-windwidth = 1000e3
+windwidth = 1040e3
 tau = tau0 * np.cos((y-y.mean())/ windwidth * np.pi )**2 + tauoffset
 aa = aa + tau[:, np.newaxis]
 with open(indir+"/zonalWindFile.bin", "wb") as f:
@@ -340,10 +338,9 @@ ax.set_xlabel(r'$\tau [N\.m^{-2}]$')
 ax.set_ylabel('y [km]')
 fig.savefig(outdir + '/figs/windSurf.png')
 
-fname = 'Channel1000Spinup.nc'
-fname2d = 'Channel1000Spinup2d.nc'
+fname = 'Channel5k_5y_Spinup.nc'
+fname2d = 'Channel5k_5y_Spinup2d.nc'
 _log.info('Reading initial conditions from from {} and {}', fname, fname2d)
-
 
 
 ####################
