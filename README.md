@@ -18,8 +18,16 @@
     `Channel5k1000_01` at 5y of run time, and runs for another x years.  Run
     with `source runSpunup.sh Channel5k1000_rough_01`
 
-    - Running `Channel5k1000_rough_01` with fast save time on levels: `fastlevels.nc`
+    - Running `Channel5k1000_rough_01` with fast save time on levels: `fastlevels.nc`  `../results/Channel5k1000_rough_01/input/fastlevels.nc`
+    got 52 h.  
 
+    - Running `channel5k1000_02` with longer forcing timescale.  WIll need spunup version as well, but after we see if it makes a difference to the eddy field per Dhruv's email.  
+
+    - Running `channel5k1000_vrough_01` but rough all through channel (no envelope)
+
+## Todo:
+
+   - 2-D fft of `fastlevels.nc`
 
 ## Contents:
 

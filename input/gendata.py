@@ -29,8 +29,8 @@ setupname=''
 u0 = 10
 N0 = 1e-3
 f0 = 1.263e-4
-runname='Channel5k1000_01'
-comments = 'Boo'
+runname='Channel5k1000_vrough_01'
+comments = 'As Channel5k1000_rough_01 but with no envelope on roughness'
 
 # to change U we need to edit external_forcing recompile
 
@@ -239,13 +239,14 @@ h = np.real(h - np.min(h))
 sig = 300e3
 xenvelope = np.zeros(nx) + 0.07 + 0.93* np.exp(-((x-x.mean())/sig)**2)
 xenvelope[np.abs(x-x.mean())<200e3] = 1.
+xenvelope = xenvelope * 0 + 1
 
 # hband = np.real(hband - np.mean(hband)+np.mean(h))
 hlow = np.real(hlow - np.mean(hlow))
 h = h * xenvelope[np.newaxis, :]
 hlow = hlow * (xenvelope)[np.newaxis, :]
 
-#d= hlow + d
+d= hlow + d
 d[0, :] = 0
 d[d>0] = 0
 d[d<-H] = -H

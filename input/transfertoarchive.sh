@@ -2,13 +2,13 @@
 #PBS -m be
 #PBS -M jklymak@gmail.com
 #PBS -l select=1:ncpus=1
-#PBS -l walltime=00:20:00
+#PBS -l walltime=01:20:00
 #PBS -q transfer
 #PBS -A ONRDC35552400
 #PBS -j oe
 
 # run as qsub -N LW1kmlowU10Amp305K18 transfertoarchive
-TOP=ForcedChannel
+TOP=ForcedChannel5k
 #TODO=Shelf1km01
 
 TODO=${PBS_JOBNAME}

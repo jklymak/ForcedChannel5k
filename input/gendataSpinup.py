@@ -70,9 +70,9 @@ logging.basicConfig(level=logging.DEBUG)
 
 _log = logging.getLogger(__name__)
 
-runtype = 'rough'  # 'full','filt','low'
+runtype = 'spreadrough'  # 'full','filt','low'
 runname='Channel5k1000_%s_01' % runtype
-comments='5k -re-spinup w or w/o rough topo after 5 h.'
+comments='5k -re-spinup w or w/o all rough topo at full amplitude but k0 and l0 lower after 5 y.'
 
 # to change U we need to edit external_forcing recompile
 
@@ -243,7 +243,7 @@ d[0, :] = 0
 d0 = d
 
 hlow = np.zeros((ny, nx))
-with xr.open_dataset('../indata/topo1k.nc') as topods:
+with xr.open_dataset('../indata/topo1kSpread.nc') as topods:
     # the data set is 1-km, and we want on this grid so bin...
     X, Y = np.meshgrid(topods.x.data, topods.y.data)
     xx = np.hstack((x, x[-1]+dx[-1]))
@@ -264,13 +264,13 @@ fig.savefig(outdir + '/figs/topolow.png')
 sig = 300e3
 xenvelope = np.zeros(nx) + 0.07 + 0.93* np.exp(-((x-x.mean())/sig)**2)
 xenvelope[np.abs(x-x.mean())<200e3] = 1.
+xenvelope = xenvelope * 0 + 1.
 
 # hband = np.real(hband - np.mean(hband)+np.mean(h))
 hlow = np.real(hlow - np.mean(hlow))
 hlow = hlow * (xenvelope)[np.newaxis, :]
 
-if runtype == 'rough':
-    d = hlow + d
+d = hlow + d
 
 d[0, :] = 0
 d[d>0] = 0

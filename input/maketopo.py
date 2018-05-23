@@ -1,6 +1,8 @@
 import numpy as np
 import logging
 import xarray as xr
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 _log = logging.getLogger(__name__)
@@ -88,7 +90,9 @@ if __name__ == "__main__":
     maxx = 1600e3
     maxy = 1040e3
 
-    xh,yh,h,hband,hlow,k,l,P,Pband,Plow=getTopo2D(dx0,maxx,dy0,maxy,amp=305.,kmin=1./6000.,kmax=1./300.)
+    xh,yh,h,hband,hlow,k,l,P,Pband,Plow=getTopo2D(dx0,maxx,dy0,maxy,amp=305.,
+            kmin=1./6000.,kmax=1./300., K0=1.8e-4/2./np.pi / 2.,
+            L0=1.8e-4/2./np.pi / 2.)
 
     # h0 is the full spectrum
     # h is between kmin and kmax
@@ -101,7 +105,7 @@ if __name__ == "__main__":
                     'hlow' : (['y', 'x'], hlow)},
                     coords={'x': (['x'], xh),
                            'y': (['y'], yh)})
-    ds.to_netcdf('../indata/topo1k.nc', 'w')
+    ds.to_netcdf('../indata/topo1kSpread.nc', 'w')
     # plot
     fig, axs = plt.subplots(2, 1)
     ax = axs[0]
@@ -109,4 +113,4 @@ if __name__ == "__main__":
     fig.colorbar(pc, ax=ax)
     ax = axs[1]
     ax.plot(ds.x, ds.hlow[50,:])
-    fig.savefig('figs/roughtopo.png')
+    fig.savefig('figs/roughtopoSpread.png')

@@ -1,3 +1,31 @@
+2018-05-23 21:00:49
+../results/Channel5k1000_spreadrough_01/input/
+5k -re-spinup w or w/o all rough topo at full amplitude but k0 and l0 lower after 5 y.
+
+2018-05-23 16:19:27
+../results/Channel5k1000_halfrough_01/input/
+5k -re-spinup w or w/o all rough topo at half amplitude after 5 y.
+
+2018-05-23 04:22:00
+../results/Channel5k1000_vrough_01/input/
+5k -re-spinup w or w/o all rough topo after 5 h.
+
+2018-05-23 01:59:50
+../results/Channel5k1000_vrough_01/input/
+5k -re-spinup w or w/o all rough topo after 5 h.
+
+2018-05-22 17:35:12
+../results/Channel5k1000_vrough_01/input/
+As Channel5k1000_rough_01 but with no envelope on roughness
+
+2018-05-22 17:32:45
+../results/Channel5k1000_vrough_01/input/
+As Channel5k1000_rough_01 but with no envelope on roughness
+
+2018-05-18 17:23:15
+../results/Channel5k1000_02/input/
+As Channel5k1000_01 but taurelax dz* bigger (i.e. 40)
+
 2018-05-16 17:02:41
 ../results/Channel5k1000_rough_01/input/
 5k -re-spinup w or w/o rough topo after 5 h.

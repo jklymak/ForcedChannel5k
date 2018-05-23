@@ -80,7 +80,7 @@
  monitorFreq=262800.,
  monitorSelect=2,
  rwSuffixType=2,
-# 72 hours: From Ryan's setup.
+# 72*40 to account for our cell size hours: From Ryan's setup.
  tauThetaClimRelax=259200.0,
 /
 
