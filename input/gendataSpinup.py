@@ -70,9 +70,10 @@ logging.basicConfig(level=logging.DEBUG)
 
 _log = logging.getLogger(__name__)
 
-runtype = 'spreadrough'  # 'full','filt','low'
+runtype = 'lindrag'  # 'full','filt','low'
 runname='Channel5k1000_%s_01' % runtype
-comments='5k -re-spinup w or w/o all rough topo at full amplitude but k0 and l0 lower after 5 y.'
+comments="""5k -re-spinup w smooth topo but a linear drag to emulate based on my
+            parameters"""
 
 # to change U we need to edit external_forcing recompile
 
@@ -153,7 +154,7 @@ try:
     shutil.copy('../build/mitgcmuv', outdir+'/../build/mitgcmuv')
     #shutil.copy('../build/mitgcmuvU%02d'%u0, outdir+'/../build/mitgcmuv%02d'%u0)
     shutil.copy('../build/Makefile', outdir+'/../build/Makefile')
-    shutil.copy('dataSpunup', outdir + '/dataSpunup')
+    shutil.copy('dataSpunupLinDrag', outdir + '/dataSpunupLinDrag')
     shutil.copy('eedata', outdir)
     shutil.copy('data.kl10', outdir)
     try:
@@ -264,7 +265,7 @@ fig.savefig(outdir + '/figs/topolow.png')
 sig = 300e3
 xenvelope = np.zeros(nx) + 0.07 + 0.93* np.exp(-((x-x.mean())/sig)**2)
 xenvelope[np.abs(x-x.mean())<200e3] = 1.
-xenvelope = xenvelope * 0 + 1.
+xenvelope = xenvelope * 0
 
 # hband = np.real(hband - np.mean(hband)+np.mean(h))
 hlow = np.real(hlow - np.mean(hlow))

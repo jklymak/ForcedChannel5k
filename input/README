@@ -1,3 +1,8 @@
+2018-05-29 17:18:46
+../results/Channel5k1000_lindrag_01/input/
+5k -re-spinup w smooth topo but a linear drag to emulate based on my
+            parameters
+
 2018-05-23 21:00:49
 ../results/Channel5k1000_spreadrough_01/input/
 5k -re-spinup w or w/o all rough topo at full amplitude but k0 and l0 lower after 5 y.

@@ -25,9 +25,11 @@
 
     - Running `channel5k1000_vrough_01` but rough all through channel (no envelope)
 
+    - Running: `channel5k1000_lindrag_01` with smooth bathy but linear drag derived from my parameterization.  Note that it gives a similar drag (2.3e-3 m/s) to those suggested by Marshall et al as being "large".
+
 ## Todo:
 
-   - 2-D fft of `fastlevels.nc`
+   - 2-D fft of `fastlevels.nc`: See python/PlotPowerSpectra.ipynb
 
 ## Contents:
 

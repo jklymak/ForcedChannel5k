@@ -32,7 +32,7 @@ outdir=$results$top
 #rm -rf ../archive/$top/indata/*
 
 cd $outdir/input
-cp dataSpunup data
+cp dataSpunupLinDrag data
 rm STD*
 pwd
 
