@@ -2,7 +2,7 @@
 #PBS -m be
 #PBS -M jklymak@gmail.com
 #PBS -l select=2:ncpus=32:mpiprocs=32
-#PBS -l walltime=02:00:00
+#PBS -l walltime=2:00:00
 #PBS -q standard
 #PBS -A ONRDC35552400
 #PBS -j oe
@@ -33,7 +33,7 @@ outdir=$results$top
 
 cd $outdir/input
 # cp dataSpinup02 data
-rm STD*
+# rm STD*
 pwd
 
 ls -al ../build/mitgcmuv
