@@ -1,3 +1,39 @@
+2018-06-01 20:23:48
+../results/Channel5k1000_highlinquadspread_01/input/
+5k -re-spinup w smooth topo but a linear drag spread over
+            bottom 7 grid cells to emulate based on my
+            parameters
+
+2018-06-01 18:12:04
+../results/Channel5k1000_highlinquad_01/input/
+5k -re-spinup w smooth topo but a linear drag spread over
+            bottom 7 grid cells to emulate based on my
+            parameters
+
+2018-06-01 16:36:13
+../results/Channel5k1000_linquaddrag_01/input/
+5k -re-spinup w smooth topo but a linear drag spread over
+            bottom 7 grid cells to emulate based on my
+            parameters
+
+2018-06-01 02:10:56
+../results/Channel5k1000_linquaddrag_01/input/
+5k -re-spinup w smooth topo but a linear drag spread over
+            bottom 7 grid cells to emulate based on my
+            parameters
+
+2018-06-01 02:05:14
+../results/Channel5k1000_doubledrag_01/input/
+5k -re-spinup w smooth topo but a linear drag spread over
+            bottom 7 grid cells to emulate based on my
+            parameters
+
+2018-05-30 20:21:47
+../results/Channel5k1000_spreaddrag_01/input/
+5k -re-spinup w smooth topo but a linear drag spread over
+            bottom 7 grid cells to emulate based on my
+            parameters
+
 2018-05-29 17:18:46
 ../results/Channel5k1000_lindrag_01/input/
 5k -re-spinup w smooth topo but a linear drag to emulate based on my

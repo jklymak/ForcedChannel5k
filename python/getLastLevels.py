@@ -1,6 +1,6 @@
 import xarray as xr
 # 'Channel5k1000_01',
-for td in [ 'Channel5k1000_vrough_01']:
+for td in [ 'Channel5k1000_lindrag_01']:
     todo = '../results/{}/input/levels.nc'.format(td)
 
     with xr.open_dataset(todo) as ds:

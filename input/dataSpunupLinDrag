@@ -41,7 +41,7 @@
  saltStepping=.FALSE.,
 #
 # boundary conditions
- bottomDragQuadratic=0.0,
+ bottomDragQuadratic=0.010,
  bottomDragLinear=0.0023,
  no_slip_sides=.FALSE.,
  no_slip_bottom=.FALSE.,
